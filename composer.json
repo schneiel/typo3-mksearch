@@ -45,8 +45,10 @@
         "digedag/rn-base": ">=1.6.3"
     },
     "require-dev": {
+        "nimut/testing-framework": "^2.0 || ^3.0 || ^4.0",
+        "sebastian/phpcpd": "^3.0",
         "friendsofphp/php-cs-fixer": "2.14.*",
-        "phpstan/phpstan": "^0.11.8"
+        "phpstan/phpstan-shim": "^0.10.2"
     },
     "autoload": {
         "classmap": [
@@ -69,6 +71,28 @@
         "exclude-from-classmap": ["lib/Elastica/"],
         "psr-4": {
             "DMK\\Mksearch\\" : "Classes"
+        }
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin",
+        "preferred-install": {
+            "typo3/cms": "source"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "mkdir -p .Build/Web/typo3conf/ext/",
+            "[ -L .Build/Web/typo3conf/ext/mksearch ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/mksearch"
+        ]
+    },
+    "extra" : {
+        "branch-alias" : {
+            "dev-development" : "master-dev"
+        },
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/Web"
         }
     }
 }
