@@ -5,3 +5,4 @@
 .*md.html
 /.php_cs.cache
 /.Build
+.composer.lock
