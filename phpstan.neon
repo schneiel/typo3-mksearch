@@ -1,0 +1,19 @@
+parameters:
+    autoload_files:
+        - %currentWorkingDirectory%/.Build/vendor/autoload.php
+    excludes_analyse:
+        - %currentWorkingDirectory%/Classes/ViewHelpers/Format/HtmlViewHelper.php
+    ignoreErrors:
+        -
+            message: '/Parameter \$configurationReader of method DMK\\Mksearch\\Hooks\\RealUrlConfigurationReader::addMksearchToBannedUrlsRegExp\(\) has invalid typehint type/'
+            path: %currentWorkingDirectory%/Classes/Hooks/RealUrlConfigurationReader.php
+        -
+            message: '/Call to method get\(\) on an unknown class DmitryDulepov\\Realurl\\Configuration\\ConfigurationReader\./'
+            path: %currentWorkingDirectory%/Classes/Hooks/RealUrlConfigurationReader.php
+        -
+            message: '/Call to an undefined static method TYPO3\\CMS\\Fluid\\ViewHelpers\\Format\\CropViewHelper::[a-zA-Z]+\(\)\./'
+            path: %currentWorkingDirectory%/Classes/ViewHelpers/Format/CropViewHelper.php
+        -
+            message: '/Access to an undefined property object::\$[a-z]+\./'
+            path: %currentWorkingDirectory%/Classes/ViewHelpers/CObjectViewHelper.php
+
