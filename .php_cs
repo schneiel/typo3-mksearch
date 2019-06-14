@@ -3,6 +3,7 @@
 $finder = PhpCsFixer\Finder::create()
     ->exclude('Resources')
     ->exclude('Documentation')
+    ->exclude('lib')
     ->in(__DIR__)
 ;
 
