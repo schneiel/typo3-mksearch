@@ -1,4 +1,25 @@
+includes:
+    - .Build/vendor/saschaegerer/phpstan-typo3/extension.neon
+    - .Build/vendor/dmk/phpstan-rnbase/extension.neon
 parameters:
+    level: max
+    paths:
+        - "%currentWorkingDirectory%/Classes"
+        - "%currentWorkingDirectory%/action"
+        - "%currentWorkingDirectory%/filter"
+        - "%currentWorkingDirectory%/hooks"
+        - "%currentWorkingDirectory%/indexer"
+        - "%currentWorkingDirectory%/interface"
+        - "%currentWorkingDirectory%/marker"
+        - "%currentWorkingDirectory%/model"
+        - "%currentWorkingDirectory%/scheduler"
+        - "%currentWorkingDirectory%/search"
+        - "%currentWorkingDirectory%/service"
+        - "%currentWorkingDirectory%/signalSlotDispatcher"
+        - "%currentWorkingDirectory%/tca"
+        - "%currentWorkingDirectory%/util"
+        - "%currentWorkingDirectory%/view"
+    bootstrap: %rootDir%/../../saschaegerer/phpstan-typo3/src/PhpstanTypo3Bootstrap.php
     autoload_files:
         - %currentWorkingDirectory%/.Build/vendor/autoload.php
     excludes_analyse:

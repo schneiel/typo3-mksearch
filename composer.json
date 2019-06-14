@@ -40,15 +40,22 @@
         "mksearch": "self.version",
         "typo3-ter/mksearch": "self.version"
     },
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/Baachi/phpstan-typo3.git"
+    }
+    ],
     "require": {
         "typo3/cms": "~4.5 || ~6.2 || ~7.6 || ~8.7",
-        "digedag/rn-base": ">=1.6.3"
+        "digedag/rn-base": ">=1.6.3",
+        "dmk/phpstan-rnbase": "^0.0.1"
     },
     "require-dev": {
         "nimut/testing-framework": "^2.0 || ^3.0 || ^4.0",
         "sebastian/phpcpd": "^3.0",
         "friendsofphp/php-cs-fixer": "2.15.*",
-        "phpstan/phpstan-shim": "^0.11.8"
+        "phpstan/phpstan": "^0.11",
+        "saschaegerer/phpstan-typo3": "dev-feature/update-phpstan"
     },
     "autoload": {
         "classmap": [
@@ -72,6 +79,12 @@
         "psr-4": {
             "DMK\\Mksearch\\" : "Classes"
         }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "lib",
+            "Resources/Private/PHP/Elastica"
+        ]
     },
     "config": {
         "vendor-dir": ".Build/vendor",
