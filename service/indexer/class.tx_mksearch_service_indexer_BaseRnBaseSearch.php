@@ -42,7 +42,7 @@ abstract class tx_mksearch_service_indexer_BaseRnBaseSearch extends Tx_Rnbase_Se
     /**
      * Container for sql resource.
      *
-     * @var sql resource
+     * @var resource
      */
     protected $sqlRes;
 

@@ -118,7 +118,6 @@ class tx_mksearch_filter_LuceneBase extends tx_rnbase_filter_BaseFilter implemen
      * @TODO: das klappt zurzeit nur bei einfacher sortierung!
      *
      * @param array                 $options
-     * @param tx_rnbase_IParameters $parameters
      */
     protected function handleSorting(&$options)
     {

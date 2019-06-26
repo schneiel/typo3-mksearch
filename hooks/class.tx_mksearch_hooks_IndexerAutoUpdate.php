@@ -114,7 +114,7 @@ class tx_mksearch_hooks_IndexerAutoUpdate
      * rn_base hook nachdem ein insert durchgeführt wurde.
      * Requires rn_base 0.14.6.
      *
-     * @param array &$params
+     * @param array $params
      */
     public function rnBaseDoInsertPost(&$params)
     {
@@ -135,7 +135,7 @@ class tx_mksearch_hooks_IndexerAutoUpdate
      * rn_base hook nachdem ein Update durchgeführt wurde.
      * Requires rn_base 0.14.6.
      *
-     * @param array &$params
+     * @param array $params
      */
     public function rnBaseDoUpdatePost(&$params)
     {
@@ -174,7 +174,7 @@ class tx_mksearch_hooks_IndexerAutoUpdate
      * rn_base hook nachdem ein Update durchgeführt wurde.
      * Requires rn_base 0.14.6.
      *
-     * @param array &$params
+     * @param array $params
      */
     public function rnBaseDoDeletePre(&$params)
     {

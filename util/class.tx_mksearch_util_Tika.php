@@ -80,7 +80,7 @@ class tx_mksearch_util_Tika
             tx_rnbase_util_Logger::warn('Tika Jar not found!', 'mksearch', array('Jar' => $this->tikaJar));
             $this->tikaAvailable = 0;
 
-            return $this->tikaAvailable;
+            return false;
         }
 
         $commandUtilityClass = tx_rnbase_util_Typo3Classes::getCommandUtilityClass();
@@ -88,11 +88,11 @@ class tx_mksearch_util_Tika
             tx_rnbase_util_Logger::warn('Java not found! Java is required to run Apache Tika.', 'mksearch');
             $this->tikaAvailable = 0;
 
-            return $this->tikaAvailable;
+            return false;
         }
         $this->tikaAvailable = 1;
 
-        return $this->tikaAvailable;
+        return true;
     }
 
     private function setTikaJar($tikaJar)
@@ -122,9 +122,8 @@ class tx_mksearch_util_Tika
     /**
      * Extracs text from a file using Apache Tika.
      *
-     * @param   string      content which should be processed
-     * @param   string      Content type
-     * @param   array       Configuration array
+     * @param string $file
+     * @param string $tikaCommand
      *
      * @return string
      *
@@ -142,9 +141,7 @@ class tx_mksearch_util_Tika
     /**
      * Extracs text from a file using Apache Tika.
      *
-     * @param   string      content which should be processed
-     * @param   string      Content type
-     * @param   array       Configuration array
+     * @param string $file
      *
      * @return string
      *
@@ -162,7 +159,7 @@ class tx_mksearch_util_Tika
     /**
      * Extracs meta data from a file using Apache Tika.
      *
-     * @param   string file path
+     * @param string $file
      *
      * @return array
      *
@@ -252,9 +249,9 @@ class tx_mksearch_util_Tika
     /**
      * Check if a file exists and is readable within TYPO3.
      *
-     * @param   string File name
+     * @param string $fName
      *
-     * @return string file name with absolute path or FALSE
+     * @return string
      *
      * @throws Exception
      */

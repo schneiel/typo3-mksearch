@@ -53,8 +53,8 @@ class tx_mksearch_model_SearchHit extends tx_rnbase_model_base implements tx_mks
     /**
      * Fill model with data.
      *
-     * @param array         $data
-     * @param bool optional $merge Merge existing data with new data with precedence to the new data
+     * @param array $data
+     * @param bool  $merge Merge existing data with new data with precedence to the new data
      */
     public function fillData(array $data, $merge = true)
     {

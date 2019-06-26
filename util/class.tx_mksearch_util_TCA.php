@@ -54,7 +54,7 @@ class tx_mksearch_util_TCA
     /**
      * Get extension keys of all registered indexers.
      *
-     * @param array &$params
+     * @param array $params
      *
      * @return array
      */
@@ -72,7 +72,7 @@ class tx_mksearch_util_TCA
     /**
      * Get content types keys of the given indexer extension.
      *
-     * @param array &$params
+     * @param array $params
      *
      * @return array
      */

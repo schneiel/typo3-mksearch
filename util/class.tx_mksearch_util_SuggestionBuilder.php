@@ -87,7 +87,7 @@ class tx_mksearch_util_SuggestionBuilder
     /**
      * Liefert eine simple Suggestion zurück.
      *
-     * @param string $field
+     * @param string $aSuggestion
      *
      * @return tx_mksearch_model_Suggestion
      */

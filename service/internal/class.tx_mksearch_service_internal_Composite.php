@@ -53,7 +53,7 @@ class tx_mksearch_service_internal_Composite extends tx_mksearch_service_interna
     /**
      * Search database for all configurated Indices.
      *
-     * @param tx_mksearch_model_internal_Index $indexerconfig
+     * @param tx_mksearch_model_internal_Index $index
      *
      * @return array[tx_mksearch_model_internal_Index]
      */

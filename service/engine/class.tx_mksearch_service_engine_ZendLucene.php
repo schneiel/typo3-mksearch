@@ -165,7 +165,7 @@ class tx_mksearch_service_engine_ZendLucene extends Tx_Rnbase_Service_Base imple
     /**
      * Build query recursively from query array.
      *
-     * @param $fields
+     * @param array $fields
      *
      * @return Zend_Search_Lucene_Search_Query_Boolean
      */
@@ -461,7 +461,7 @@ class tx_mksearch_service_engine_ZendLucene extends Tx_Rnbase_Service_Base imple
     /**
      * Open an index.
      *
-     * @param tx_mksearch_model_internal_Index $name          Name of the index to open
+     * @param tx_mksearch_model_internal_Index $index         Name of the index to open
      * @param bool                             $forceCreation Force creation of index if it doesn't exist
      */
     public function openIndex(tx_mksearch_model_internal_Index $index, $forceCreation = false)
@@ -541,7 +541,7 @@ class tx_mksearch_service_engine_ZendLucene extends Tx_Rnbase_Service_Base imple
     /**
      * Delete an entire index.
      *
-     * @param optional string $name Name of index to delete, if not the open index is meant to be deleted
+     * @param string $name Name of index to delete, if not the open index is meant to be deleted
      */
     public function deleteIndex($name = null)
     {
@@ -603,8 +603,6 @@ class tx_mksearch_service_engine_ZendLucene extends Tx_Rnbase_Service_Base imple
      * @param $uid
      * @param $extKey
      * @param $contentType
-     *
-     * @return unknown_type
      */
     private function getIndexDocumentByContentUid($uid, $extKey, $contentType)
     {
@@ -645,8 +643,8 @@ class tx_mksearch_service_engine_ZendLucene extends Tx_Rnbase_Service_Base imple
      * Add a field to the given index document.
      *
      * @param string                             $key
-     * @param tx_mksearch_interface_IndexerField &$field
-     * @param Zend_Search_Lucene_Document        &$doc
+     * @param tx_mksearch_interface_IndexerField $field
+     * @param Zend_Search_Lucene_Document        $doc
      */
     private function addFieldToIndexDoc($key, tx_mksearch_interface_IndexerField $field, Zend_Search_Lucene_Document $doc)
     {
@@ -684,7 +682,7 @@ class tx_mksearch_service_engine_ZendLucene extends Tx_Rnbase_Service_Base imple
     /**
      * Put a new record into index.
      *
-     * @param tx_mksearch_model_IndexerDocument $doc "Document" to index
+     * @param tx_mksearch_interface_IndexerDocument $doc "Document" to index
      */
     public function indexNew(tx_mksearch_interface_IndexerDocument $doc)
     {
@@ -737,7 +735,7 @@ class tx_mksearch_service_engine_ZendLucene extends Tx_Rnbase_Service_Base imple
     /**
      * Update or create an index record.
      *
-     * @param tx_mksearch_model_IndexerDocument $doc "Document" to index
+     * @param tx_mksearch_interface_IndexerDocument $doc "Document" to index
      */
     public function indexUpdate(tx_mksearch_interface_IndexerDocument $doc)
     {

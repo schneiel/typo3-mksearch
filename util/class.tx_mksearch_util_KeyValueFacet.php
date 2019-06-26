@@ -100,8 +100,8 @@ class tx_mksearch_util_KeyValueFacet
 
     /**
      * @param array $keys
-     * @param array $value
-     * @param array $sorting
+     * @param array $values
+     * @param array $sortings
      *
      * @return string
      */

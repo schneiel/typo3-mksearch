@@ -35,7 +35,7 @@ class tx_mksearch_hooks_EngineZendLucene
      * @param array $params:
      *                       ['data']    => &associative array[tx_mksearch_interface_IndexerField]
      */
-    public function convertFields($p)
+    public function convertFields($params)
     {
         // Do some converting...
         // @see tx_mksearch_service_engine_ZendLucene::indexNew() - hooks

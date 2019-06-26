@@ -76,9 +76,9 @@ class tx_mksearch_marker_Facet extends tx_mksearch_marker_SearchResultSimple
     /**
      * Führt vor dem parsen Änderungen am Model durch.
      *
-     * @param tx_rnbase_model_base     &$item
-     * @param tx_rnbase_configurations &$configurations
-     * @param string                   &$confId
+     * @param tx_rnbase_model_base     $item
+     * @param tx_rnbase_configurations $configurations
+     * @param string                   $confId
      */
     protected function prepareItem(
         Tx_Rnbase_Domain_Model_DataInterface $item,

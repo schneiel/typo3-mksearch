@@ -208,7 +208,7 @@ class tx_mksearch_util_Tree
         // Thus, WE have to take care of enableFields
         // Not every table supports enable fields...
         if (isset($GLOBALS['TCA'][$table]['ctrl']) && is_array($GLOBALS['TCA'][$table]['ctrl'])) {
-            $enable = self::page()->enableFields($table, null, array('fe_group' => true));
+            $enable = self::page()->enableFields($table, 0, array('fe_group' => true));
             // Cut "AND" in the beginning
             $enable = substr($enable, strpos($enable, 'AND ') + 4);
             $ffields[SEARCH_FIELD_CUSTOM] = $enable;

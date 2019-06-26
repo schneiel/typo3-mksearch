@@ -18,7 +18,7 @@ class tx_mksearch_util_SolrResponseProcessor
     /**
      * Enter description here ...
      *
-     * @param array                    $response
+     * @param array                    $result
      * @param array                    $options
      * @param tx_rnbase_configurations $configurations
      * @param string                   $confId

@@ -103,7 +103,7 @@ class tx_mksearch_util_Misc
      *
      * @TODO: wäre in der tx_rnbase_util_Strings besser aufgehoben?
      *
-     * @param mixed $t
+     * @param mixed $mixed
      *
      * @return mixed
      */

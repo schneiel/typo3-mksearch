@@ -77,7 +77,7 @@ abstract class tx_mksearch_service_Base extends Tx_Rnbase_Service_Base
      * @TODO:   Achtung,
      *          tx_rnbase_util_SearchBase::getWrapperClass() ist eigentlich protected!
      *
-     * @param int $ct
+     * @param int $uuid
      *
      * @return tx_rnbase_model_base
      */

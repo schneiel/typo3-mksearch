@@ -186,9 +186,6 @@ class tx_mksearch_filter_SolrBase extends tx_rnbase_filter_BaseFilter
      * Setzt die Anzahl der Treffer pro Seite.
      *
      * @param array                    $options
-     * @param tx_rnbase_IParameters    $parameters
-     * @param tx_rnbase_configurations $configurations
-     * @param string                   $confId
      */
     protected function handleLimit(&$options)
     {
@@ -204,7 +201,6 @@ class tx_mksearch_filter_SolrBase extends tx_rnbase_filter_BaseFilter
      * Fügt den Suchstring zu dem Filter hinzu.
      *
      * @param array                    $fields
-     * @param array                    $options
      * @param tx_rnbase_IParameters    $parameters
      * @param tx_rnbase_configurations $configurations
      * @param string                   $confId
@@ -585,8 +581,8 @@ class tx_mksearch_filter_SolrBase extends tx_rnbase_filter_BaseFilter
      * Dieses Feld muss konfiguriert werden,
      * da darin die Umkreissuche stattfindet.
      *
-     * @param array &$fields
-     * @param array &$options
+     * @param array $fields
+     * @param array $options
      */
     protected function handleSpatial(&$fields, &$options)
     {
@@ -639,7 +635,6 @@ class tx_mksearch_filter_SolrBase extends tx_rnbase_filter_BaseFilter
      * @TODO: das klappt zurzeit nur bei einfacher sortierung!
      *
      * @param array                 $options
-     * @param tx_rnbase_IParameters $parameters
      */
     protected function handleSorting(&$options)
     {

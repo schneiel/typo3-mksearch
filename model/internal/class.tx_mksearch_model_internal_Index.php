@@ -144,8 +144,6 @@ class tx_mksearch_model_internal_Index extends tx_rnbase_model_base
     /**
      * Returns the configuration for this index.
      *
-     * @param tx_mksearch_model_internal_Index $oIndex
-     *
      * @return array configuration array
      */
     public function getIndexConfig()

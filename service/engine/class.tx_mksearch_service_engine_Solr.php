@@ -362,7 +362,7 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
     /**
      * Delete an entire index.
      *
-     * @param optional string $name Name of index to delete, if not the open index is meant to be deleted
+     * @param string $name Name of index to delete, if not the open index is meant to be deleted
      */
     public function deleteIndex($name = null)
     {
@@ -425,7 +425,7 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
      * @param $extKey
      * @param $contentType
      *
-     * @return unknown_type
+     * @return array
      */
     private function getIndexDocumentByContentUid($uid, $extKey, $contentType)
     {
@@ -443,7 +443,7 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
     /**
      * Get a document from index.
      *
-     * @param string $uid
+     * @param int $uid
      * @param string $extKey
      * @param string $contentType
      *
@@ -476,8 +476,8 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
      * TODO: wird hier in Solr vermutlich nicht verwendet! tx_mksearch_model_IndexerField gibt es nicht mehr...
      *
      * @param string                         $key
-     * @param tx_mksearch_model_IndexerField &$field
-     * @param Zend_Search_Lucene_Document    &$doc
+     * @param tx_mksearch_model_IndexerField $field
+     * @param Zend_Search_Lucene_Document    $doc
      */
     private function addFieldToIndexDoc(
         $key,

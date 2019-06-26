@@ -92,7 +92,7 @@ class tx_mksearch_model_SolrHit extends tx_rnbase_model_base implements tx_mksea
      * As this model doesn't have a $TCA defined name,
      * return 0 like the original function, when no columns were found.
      *
-     * @return 0
+     * @return int
      */
     public function getColumnNames()
     {

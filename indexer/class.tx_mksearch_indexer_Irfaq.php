@@ -245,7 +245,8 @@ class tx_mksearch_indexer_Irfaq extends tx_mksearch_indexer_Base
     /**
      * Adds all given models to the queue.
      *
-     * @param array $aModels
+     * @param array $rawData
+     * @param $callback
      */
     protected function handleRelatedTableChanged(array $rawData, $callback)
     {

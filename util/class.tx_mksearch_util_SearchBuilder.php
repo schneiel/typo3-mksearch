@@ -198,7 +198,8 @@ class tx_mksearch_util_SearchBuilder
      *
      * Wurde nichts oder none übergeben wird die auswertung solr überlassen
      *
-     * @param string $content
+     * @param string $term
+     * @param        $combination
      * @param array  $options
      *
      * @return string

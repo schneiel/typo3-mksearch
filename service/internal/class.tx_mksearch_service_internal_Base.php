@@ -86,9 +86,6 @@ class tx_mksearch_service_internal_Base extends Tx_Rnbase_Service_Base
     /**
      * Search database for all configurated Indices.
      *
-     * @param array $fields
-     * @param array $options
-     *
      * @return array[tx_mksearch_model_internal_Index]
      */
     public function findAll()
@@ -103,8 +100,7 @@ class tx_mksearch_service_internal_Base extends Tx_Rnbase_Service_Base
     /**
      * Search database for all configurated Indices.
      *
-     * @param array $fields
-     * @param array $options
+     * @param $pageId
      *
      * @return array[tx_mksearch_model_internal_Index]
      */
@@ -123,10 +119,9 @@ class tx_mksearch_service_internal_Base extends Tx_Rnbase_Service_Base
     /**
      * Get model from database by its uid.
      *
-     * @param array $fields
-     * @param array $options
+     * @param $uid
      *
-     * @return tx_mksearch_model_*
+     * @return Exception|object
      */
     public function get($uid)
     {

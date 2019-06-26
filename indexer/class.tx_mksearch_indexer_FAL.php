@@ -107,7 +107,7 @@ class tx_mksearch_indexer_FAL extends tx_mksearch_indexer_BaseMedia
     }
 
     /**
-     * @param $sourceRecord
+     * @param array $sourceRecord
      *
      * @return bool|\TYPO3\CMS\Core\Resource\File
      */

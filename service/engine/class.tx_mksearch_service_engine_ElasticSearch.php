@@ -458,8 +458,7 @@ class tx_mksearch_service_engine_ElasticSearch extends Tx_Rnbase_Service_Base im
     /**
      * Delete an entire index.
      *
-     * @param optional              string $name Name of index to delete, if not the open index is
-     *                                           meant to be deleted
+     * @param string $name Name of index to delete, if not the open index is meant to be deleted
      */
     public function deleteIndex($name = null)
     {

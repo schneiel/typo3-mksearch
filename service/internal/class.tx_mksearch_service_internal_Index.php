@@ -243,8 +243,10 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
     /**
      * Adds models to the indexing queue.
      *
-     * @param array:Tx_Rnbase_Domain_Model_DomainInterface $models
-     * @param Traversable|array                            $options
+     * @param array[Tx_Rnbase_Domain_Model_DomainInterface] $models
+     * @param Traversable| array $options
+     *
+     * @throws Exception
      */
     public function addModelsToIndex(
         $models,
@@ -282,7 +284,7 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
     /**
      * Does the insert.
      *
-     * @param $sqlValues $sqlValues
+     * @param array $sqlValues
      *
      * @return bool
      */
@@ -636,7 +638,6 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
      * Clear indexing queue for the given table.
      *
      * @param string $table
-     * @param array  $options
      */
     public static function clearIndexingQueueForTable($table)
     {

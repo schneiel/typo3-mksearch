@@ -350,7 +350,7 @@ class tx_mksearch_service_indexer_core_Config
      *
      * @param array $include      Include options as defined in tx_mksearch_service_indexer_core_Page config options
      * @param array $exclude      Exclude options as defined in tx_mksearch_service_indexer_core_Page config options
-     * @param array $parame=array Array of parameter suffixes to be processed, with the array key being the name of the column used for restriction in SQL statement
+     * @param array $params       Array of parameter suffixes to be processed, with the array key being the name of the column used for restriction in SQL statement
      *
      * @return array['include' => array[param1 => array[uids], param2 => array[uids]], 'exclude' => ...]
      *

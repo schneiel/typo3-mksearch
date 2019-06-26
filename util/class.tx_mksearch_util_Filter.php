@@ -61,7 +61,6 @@ class tx_mksearch_util_Filter
         }
      *
      * @param string                   $termTemplate
-     * @param array                    $options
      * @param tx_rnbase_IParameters    $parameters
      * @param tx_rnbase_configurations $configurations
      * @param string                   $confId

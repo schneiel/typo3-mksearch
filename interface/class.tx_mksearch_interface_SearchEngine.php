@@ -89,7 +89,7 @@ interface tx_mksearch_interface_SearchEngine
     /**
      * Delete an entire index.
      *
-     * @param optional string $name Name of index to delete, if not the open index is meant to be deleted
+     * @param string $name Name of index to delete, if not the open index is meant to be deleted
      */
     public function deleteIndex($name = null);
 

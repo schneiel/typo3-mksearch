@@ -76,7 +76,7 @@ class tx_mksearch_util_Indexer
      * Indexes all fields of the model according to the given mapping.
      *
      * @param tx_rnbase_IModel                      $model
-     * @param array                                 $aMapping
+     * @param array                                 $recordIndexMapping
      * @param tx_mksearch_interface_IndexerDocument $indexDoc
      * @param string                                $prefix
      * @param array                                 $options
@@ -114,8 +114,8 @@ class tx_mksearch_util_Indexer
      * Collects the values of all models inside the given array
      * and adds them as multivalue (array).
      *
-     * @param array[tx_rnbase_IModel]               $model
-     * @param array                                 $aMapping
+     * @param array[tx_rnbase_IModel]               $models
+     * @param array                                 $recordIndexMapping
      * @param tx_mksearch_interface_IndexerDocument $indexDoc
      * @param string                                $prefix
      * @param array                                 $options
@@ -215,12 +215,12 @@ class tx_mksearch_util_Indexer
      * @TODO refactor to tx_mksearch_service_internal_Index::addModelsToIndex
      * @TODO remove static indexSrv cache
      *
-     * @param tx_rnbase_IModel $model
-     * @param string           $tableName
-     * @param bool             $prefer
-     * @param string           $resolver  class name of record resolver
-     * @param array            $data
-     * @param array            $options
+     * @param Tx_Rnbase_Domain_Model_RecordInterface $model
+     * @param string                                 $tableName
+     * @param bool                                   $prefer
+     * @param string                                 $resolver  class name of record resolver
+     * @param array                                  $data
+     * @param array                                  $options
      */
     public function addModelToIndex(
         Tx_Rnbase_Domain_Model_RecordInterface $model,
@@ -469,8 +469,8 @@ class tx_mksearch_util_Indexer
     }
 
     /**
-     * @param int            $pid
-     * @param array          $options
+     * @param int   $pid
+     * @param array $options
      * @param int || boolean $firstRootlineIndexInIncludePageTrees
      *
      * @return bool

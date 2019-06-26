@@ -154,7 +154,7 @@ class tx_mksearch_indexer_Cal extends tx_mksearch_indexer_Base
 
     /**
      * @param tx_mksearch_model_cal_Event            $calEvent
-     * @param tx_mksearch_interface_IndexerDocument- $indexDoc
+     * @param tx_mksearch_interface_IndexerDocument  $indexDoc
      */
     private function indexEvent(
         tx_mksearch_model_cal_Event $calEvent,
@@ -188,7 +188,7 @@ class tx_mksearch_indexer_Cal extends tx_mksearch_indexer_Base
      * Indexes the location of the event.
      *
      * @param tx_mksearch_model_cal_Event            $calEvent
-     * @param tx_mksearch_interface_IndexerDocument- $indexDoc
+     * @param tx_mksearch_interface_IndexerDocument  $indexDoc
      */
     private function indexLocation(
         tx_mksearch_model_cal_Event $calEvent,
@@ -349,7 +349,7 @@ class tx_mksearch_indexer_Cal extends tx_mksearch_indexer_Base
 
     /**
      * @param tx_mksearch_model_cal_Event            $calEvent
-     * @param tx_mksearch_interface_IndexerDocument- $indexDoc
+     * @param tx_mksearch_interface_IndexerDocument  $indexDoc
      */
     private function indexCalendar(
         tx_mksearch_model_cal_Event $calEvent,
@@ -375,7 +375,7 @@ class tx_mksearch_indexer_Cal extends tx_mksearch_indexer_Base
 
     /**
      * @param tx_mksearch_model_cal_Event            $calEvent
-     * @param tx_mksearch_interface_IndexerDocument- $indexDoc
+     * @param tx_mksearch_interface_IndexerDocument  $indexDoc
      */
     private function indexCategories(
         tx_mksearch_model_cal_Event $calEvent,
