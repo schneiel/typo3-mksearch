@@ -38,9 +38,9 @@ tx_rnbase::load('tx_mksearch_action_SearchSolr');
 class tx_mksearch_action_Search extends tx_mksearch_action_AbstractSearch
 {
     /**
-     * @param array_object             $parameters
+     * @param ArrayObject             $parameters
      * @param tx_rnbase_configurations $configurations
-     * @param array_object             $viewData
+     * @param ArrayObject             $viewData
      *
      * @return string error msg or null
      */
@@ -68,7 +68,7 @@ class tx_mksearch_action_Search extends tx_mksearch_action_AbstractSearch
 
             $searchEngine = tx_mksearch_util_ServiceRegistry::getSearchEngine($index);
             $searchEngine->openIndex($index);
-            $items = $searchEngine->search($fields, $options, $configurations);
+            $items = $searchEngine->search($fields, $options);
             $searchEngine->closeIndex();
         }
 
@@ -86,11 +86,11 @@ class tx_mksearch_action_Search extends tx_mksearch_action_AbstractSearch
      * mit den Flyweights gearbeitet. Und das übernimmt der Lucene-Engine gleich selbst, wenn man ihr
      * eine Instanz des PageBrowsers übergibt.
      *
-     * @param unknown $parameters
-     * @param unknown $configurations
-     * @param unknown $viewdata
-     * @param unknown $fields
-     * @param unknown $options
+     * @param ArrayObject $parameters
+     * @param tx_rnbase_configurations $configurations
+     * @param ArrayObject $viewdata
+     * @param array $fields
+     * @param array $options
      *
      * @todo 404 werfen wenn Seite außerhalb des Bereichs -> siehe $pageBrowser->markPageNotFoundIfPointerOutOfRange()
      */

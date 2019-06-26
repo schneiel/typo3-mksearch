@@ -44,9 +44,9 @@ class tx_mksearch_action_SearchSolr extends tx_mksearch_action_AbstractSearch
     protected $autocompleteConfId = 'autocomplete.';
 
     /**
-     * @param array_object             $parameters
-     * @param tx_rnbase_configurations $configurations
-     * @param array_object             $viewData
+     * @param tx_rnbase_IParameters     $parameters
+     * @param tx_rnbase_configurations  $configurations
+     * @param ArrayObject               $viewData
      *
      * @return string error msg or null
      */
@@ -227,7 +227,7 @@ class tx_mksearch_action_SearchSolr extends tx_mksearch_action_AbstractSearch
      * Solr liefert bei einer Suchanfrage immer die Gesamtzahl der Treffer mit.
      * Somit ist eine spezielle Suche für die Trefferzahl nicht notwendig.
      *
-     * @param tx_rnbase_IParameters    $parameters
+     * @param tx_rnbase_parameters    $parameters
      * @param tx_rnbase_configurations $configurations
      *
      * @return tx_rnbase_util_PageBrowser
@@ -340,7 +340,7 @@ class tx_mksearch_action_SearchSolr extends tx_mksearch_action_AbstractSearch
         );
 
         $firstChar = $viewData->offsetGet('charpointer');
-        $firstChar = $firstChar ?: $configurations->getParameters()->offsetGet($pointername);
+        $firstChar = $firstChar ?: $this->getParameters()->offsetGet($pointername);
 
         $viewData->offsetSet('pagerData', $pagerData);
         $viewData->offsetSet('charpointer', $firstChar);
@@ -412,7 +412,11 @@ class tx_mksearch_action_SearchSolr extends tx_mksearch_action_AbstractSearch
             if (tx_rnbase_util_TYPO3::isTYPO60OrHigher()) {
                 $tsfe = tx_rnbase_util_TYPO3::getTSFE();
                 $tsfe->config['config']['debug'] = 0;
-                $tsfe->TYPO3_CONF_VARS['FE']['debug'] = 0;
+                if(tx_rnbase_util_typo3::isTYPO86OrHigher()) {
+                    $tsfe->TYPO3_CONF_VARS['FE']['debug'] = 0;
+                } else {
+                    $GLOBALS['TYPO3_CONF_VARS']['FE']['debug'] = 0;
+                }
             }
 
             $result = $this->getViewData()->offsetGet('result');

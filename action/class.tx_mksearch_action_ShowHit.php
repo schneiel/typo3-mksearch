@@ -13,14 +13,14 @@ class tx_mksearch_action_ShowHit extends tx_rnbase_action_BaseIOC
     /**
      * @var tx_mksearch_model_internal_Index
      */
-    private $index = false;
+    private $index;
 
     /**
      * @param tx_rnbase_IParameters    $parameters
      * @param tx_rnbase_configurations $configurations
      * @param ArrayObject              $viewdata
      *
-     * @return string Errorstring or null
+     * @return string | null Errorstring or null
      */
     protected function handleRequest(&$parameters, &$configurations, &$viewdata)
     {
@@ -31,8 +31,7 @@ class tx_mksearch_action_ShowHit extends tx_rnbase_action_BaseIOC
     }
 
     /**
-     * @throws InvalidArgumentException
-     * @throws Ambigous                 <Exception, LogicException, LogicException, tx_mksearch_service_engine_SolrException>
+     * @throws InvalidArgumentException | Exception | LogicException | tx_mksearch_service_engine_SolrException
      *
      * @return tx_mksearch_interface_SearchHit
      */
@@ -48,7 +47,7 @@ class tx_mksearch_action_ShowHit extends tx_rnbase_action_BaseIOC
         if (!$uid) {
             $uidParamName = $configurations->get($confId.'uidParamName');
             $uidParamName = $uidParamName ? $uidParamName : 'item';
-            $uid = $configurations->getParameters()->getInt($uidParamName);
+            $uid = $configurations->getInt($uidParamName);
         }
 
         tx_rnbase_util_Misc::callHook(
@@ -98,9 +97,10 @@ class tx_mksearch_action_ShowHit extends tx_rnbase_action_BaseIOC
      * @param string $extKey
      * @param string $contentType
      *
-     * @throws Ambigous <Exception, InvalidArgumentException, tx_mksearch_service_engine_SolrException>
+     * @throws Exception | InvalidArgumentException | tx_mksearch_service_engine_SolrException
      *
-     * @return
+     * @return tx_mksearch_model_SearchHit|null
+     *
      */
     protected function searchByContentUid($uid, $extKey, $contentType)
     {
@@ -154,13 +154,14 @@ class tx_mksearch_action_ShowHit extends tx_rnbase_action_BaseIOC
      */
     protected function getIndex()
     {
-        if (false === $this->index) {
+        if (null === $this->index) {
             $indexUid = $this->getConfigurations()->get($this->getConfId().'usedIndex');
             //let's see if we got a index to use via parameters
             if (empty($indexUid)) {
-                $indexUid = $this->getConfigurations()->getParameters()->get('usedIndex');
+                $indexUid = $this->getParameters()->get('usedIndex');
             }
 
+            /** @var tx_mksearch_model_internal_Index $index */
             $index = tx_mksearch_util_ServiceRegistry::getIntIndexService()->get($indexUid);
 
             if (!$index->isValid()) {

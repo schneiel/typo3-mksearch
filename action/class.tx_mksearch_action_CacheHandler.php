@@ -17,7 +17,7 @@ class tx_mksearch_action_CacheHandler extends tx_rnbase_action_CacheHandlerDefau
      */
     protected function generateKey()
     {
-        $key = parent::generateKey(null);
+        $key = $this->getCacheKey();
         // Parameter cHash anhängen
         $key .= '_'.md5(serialize($this->getAllowedParameters()));
 
@@ -32,7 +32,6 @@ class tx_mksearch_action_CacheHandler extends tx_rnbase_action_CacheHandlerDefau
      */
     private function getAllowedParameters()
     {
-        $parameters = $this->getConfigurations()->getParameters();
         $params = array();
         $allowed = tx_rnbase_util_Strings::trimExplode(
             ',',
@@ -40,7 +39,7 @@ class tx_mksearch_action_CacheHandler extends tx_rnbase_action_CacheHandlerDefau
             1
         );
         foreach ($allowed as $p) {
-            $params[$p] = $parameters->get($p);
+            $params[$p] = $this->getConfigurations()->get($p);
         }
 
         return $params;

@@ -36,15 +36,12 @@ abstract class tx_mksearch_action_AbstractSearch extends tx_rnbase_action_BaseIO
     /**
      * The current search index to use.
      *
-     * @var tx_mksearch_service_internal_Index
+     * @var tx_mksearch_model_internal_Index
      */
     private $searchIndex = null;
 
     /**
      * Returns the model for the current used index.
-     *
-     * @param tx_rnbase_configurations $configurations
-     * @param string                   $confId
      *
      * @throws Exception
      *
@@ -59,10 +56,12 @@ abstract class tx_mksearch_action_AbstractSearch extends tx_rnbase_action_BaseIO
             $indexUid = $configurations->get($confId.'usedIndex');
             //let's see if we got a index to use via parameters
             if (empty($indexUid)) {
-                $indexUid = $configurations->getParameters()->get('usedIndex');
+                $indexUid = $configurations->get('usedIndex');
             }
 
-            $this->searchIndex = tx_mksearch_util_ServiceRegistry::getIntIndexService()->get($indexUid);
+            /** @var tx_mksearch_model_internal_Index $searchIndex */
+            $searchIndex = tx_mksearch_util_ServiceRegistry::getIntIndexService()->get($indexUid);;
+            $this->searchIndex =  $searchIndex;
         }
 
         if (!$this->searchIndex->isValid()) {
@@ -93,7 +92,7 @@ abstract class tx_mksearch_action_AbstractSearch extends tx_rnbase_action_BaseIO
         $options = array();
         tx_rnbase_util_SearchBase::setConfigOptions($options, $configurations, 'softlink.options.');
         $options['where'] = 'keyword='.$GLOBALS['TYPO3_DB']->fullQuoteStr($value, 'tx_mksearch_keywords');
-        $rows = tx_rnbase_util_DB::doSelect('link', 'tx_mksearch_keywords', $options);
+        $rows = Tx_Rnbase_Database_Connection::getInstance()->doSelect('link', 'tx_mksearch_keywords', $options);
 
         if (1 == count($rows)) {
             $link = $configurations->createLink(false);

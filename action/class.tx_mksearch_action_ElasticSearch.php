@@ -38,9 +38,9 @@ tx_rnbase::load('tx_mksearch_action_SearchSolr');
 class tx_mksearch_action_ElasticSearch extends tx_mksearch_action_AbstractSearch
 {
     /**
-     * @param array_object             $parameters
+     * @param ArrayObject              $parameters
      * @param tx_rnbase_configurations $configurations
-     * @param array_object             $viewData
+     * @param ArrayObject              $viewData
      *
      * @return string error msg or null
      */
@@ -59,6 +59,7 @@ class tx_mksearch_action_ElasticSearch extends tx_mksearch_action_AbstractSearch
         $options = array();
         $items = array();
 
+        $searchResult = null;
         if ($filter->init($fields, $options)) {
             $index = $this->getSearchIndex();
 
@@ -84,8 +85,8 @@ class tx_mksearch_action_ElasticSearch extends tx_mksearch_action_AbstractSearch
         }
 
         $viewData->offsetSet('result', $searchResult);
-        $viewData->offsetSet('searchcount', $searchResult['numFound']);
-        $viewData->offsetSet('search', $searchResult['items']);
+        $viewData->offsetSet('searchcount', empty($searchResult['numFound']) ? 0 : $searchResult['numFound']);
+        $viewData->offsetSet('search', empty($searchResult['items']) ? [] : $searchResult['items']);
 
         return null;
     }
@@ -103,17 +104,16 @@ class tx_mksearch_action_ElasticSearch extends tx_mksearch_action_AbstractSearch
      */
     protected function getServiceRegistry()
     {
-        return tx_mksearch_util_ServiceRegistry;
+        return tx_mksearch_util_ServiceRegistry::class;
     }
 
     /**
-     * @param tx_rnbase_parameters                     $parameters
-     * @param tx_rnbase_configurations                 $configurations
-     * @param unknown                                  $confId
-     * @param ArrayObject                              $viewdata
-     * @param array                                    $fields
-     * @param array                                    $options
-     * @param tx_mksearch_service_engine_ElasticSearch $index
+     * @param tx_rnbase_parameters     $parameters
+     * @param tx_rnbase_configurations $configurations
+     * @param string                   $confId
+     * @param ArrayObject              $viewdata
+     * @param array                    $fields
+     * @param array                    $options
      */
     public function handlePageBrowser(
         tx_rnbase_parameters $parameters,
