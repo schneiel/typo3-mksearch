@@ -50,6 +50,7 @@ class tx_mksearch_mod1_util_Template
 
         if (is_array($rootPage)) {
             // felder erzeugen
+            $markerArr = array();
             foreach ($rootPage as $field => $value) {
                 $markerArr['###ROOTPAGE_'.strtoupper($field).'###'] = $value;
             }
@@ -128,7 +129,7 @@ class tx_mksearch_mod1_util_Template
      * @param array                 $columns
      * @param tx_rnbase_mod_IModule $mod
      *
-     * @return columns
+     * @return array
      */
     public static function getTableLayout(array $columns, tx_rnbase_mod_IModule $mod)
     {

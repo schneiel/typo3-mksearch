@@ -28,6 +28,14 @@
  */
 class tx_mksearch_mod1_decorator_Indizes
 {
+    /**
+     * @var tx_rnbase_mod_IModule
+     */
+    private $mod;
+
+    /**
+     * @param tx_rnbase_mod_IModule $mod
+     */
     public function __construct($mod)
     {
         $this->mod = $mod;

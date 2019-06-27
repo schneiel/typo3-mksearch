@@ -36,7 +36,7 @@ class tx_mksearch_util_SolrAutocomplete
     protected static $autocompleteConfId = 'autocomplete.';
 
     /**
-     * @param tx_rnbase_configurations $configurations
+     * @param Tx_Rnbase_Configuration_ProcessorInterface $configurations
      * @param string                   $confId
      *
      * example TS config:
@@ -55,7 +55,7 @@ class tx_mksearch_util_SolrAutocomplete
      * @return tx_rnbase_util_Link
      */
     public static function getAutocompleteActionLinkByConfigurationsAndConfId(
-        tx_rnbase_configurations $configurations,
+        Tx_Rnbase_Configuration_ProcessorInterface $configurations,
         $confId
     ) {
         $linkParameters = array('ajax' => 1);

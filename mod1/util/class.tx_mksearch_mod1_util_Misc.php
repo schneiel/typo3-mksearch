@@ -22,7 +22,7 @@ class tx_mksearch_mod1_util_Misc
         }
         foreach ($pages as $pid => &$page) {
             $pageinfo = Tx_Rnbase_Backend_Utility::readPageAccess($pid, $mod->perms_clause);
-            $modUrl = Tx_Rnbase_Backend_Utility::getModuleUrl('web_MksearchM1', array('id' => $pid), '');
+            $modUrl = Tx_Rnbase_Backend_Utility::getModuleUrl('web_MksearchM1', array('id' => $pid));
             $page = '<a href="'.$modUrl.'">';
             $page .= Tx_Rnbase_Backend_Utility_Icons::getSpriteIconForRecord('pages', Tx_Rnbase_Backend_Utility::getRecord('pages', $pid));
             $page .= ' '.$pageinfo['title'];
@@ -52,15 +52,15 @@ class tx_mksearch_mod1_util_Misc
         }
         $pages = array_merge(
             // wir holen alle seiten auf denen indexer liegen
-            tx_rnbase_util_DB::doSelect('pid as pageid', 'tx_mksearch_indices', array('enablefieldsoff' => 1)),
+            Tx_Rnbase_Database_Connection::getInstance()->doSelect('pid as pageid', 'tx_mksearch_indices', array('enablefieldsoff' => 1)),
             // wir holen alle seiten auf denen configs liegen
-            tx_rnbase_util_DB::doSelect('pid as pageid', 'tx_mksearch_indexerconfigs', array('enablefieldsoff' => 1)),
+            Tx_Rnbase_Database_Connection::getInstance()->doSelect('pid as pageid', 'tx_mksearch_indexerconfigs', array('enablefieldsoff' => 1)),
             // wir holen alle seiten auf denen composites liegen
-            tx_rnbase_util_DB::doSelect('pid as pageid', 'tx_mksearch_configcomposites', array('enablefieldsoff' => 1)),
+            Tx_Rnbase_Database_Connection::getInstance()->doSelect('pid as pageid', 'tx_mksearch_configcomposites', array('enablefieldsoff' => 1)),
             // wir holen alle seiten auf denen keywords liegen
-            tx_rnbase_util_DB::doSelect('pid as pageid', 'tx_mksearch_keywords', array('enablefieldsoff' => 1)),
+            Tx_Rnbase_Database_Connection::getInstance()->doSelect('pid as pageid', 'tx_mksearch_keywords', array('enablefieldsoff' => 1)),
             // wir holen alle seiten die mksearch beinhalten
-            tx_rnbase_util_DB::doSelect('uid as pageid', 'pages', array('enablefieldsoff' => 1, 'where' => 'module=\'mksearch\''))
+            Tx_Rnbase_Database_Connection::getInstance()->doSelect('uid as pageid', 'pages', array('enablefieldsoff' => 1, 'where' => 'module=\'mksearch\''))
         );
         if (empty($pages)) {
             return array();

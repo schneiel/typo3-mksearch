@@ -184,7 +184,7 @@ abstract class tx_mksearch_indexer_BaseMedia implements tx_mksearch_interface_In
     /**
      * Indexing binary data by Solr CELL.
      *
-     * @param table                                 $tableName
+     * @param string                                $tableName
      * @param array                                 $sourceRecord
      * @param tx_mksearch_interface_IndexerDocument $indexDoc
      * @param array                                 $options
@@ -204,7 +204,7 @@ abstract class tx_mksearch_indexer_BaseMedia implements tx_mksearch_interface_In
     }
 
     /**
-     * @param table                                 $tableName
+     * @param string                                $tableName
      * @param array                                 $sourceRecord
      * @param tx_mksearch_interface_IndexerDocument $indexDoc
      * @param array                                 $options
@@ -339,12 +339,14 @@ abstract class tx_mksearch_indexer_BaseMedia implements tx_mksearch_interface_In
         $mode = empty($options['indexMode']) ? 'solr' : strtolower($options['indexMode']);
         switch ($mode) {
             case 'tika':
-                return 'indexTika';
+                $ret = 'indexTika';
+                break;
             case 'none':
-                return 'indexNone';
+                $ret = 'indexNone';
+                break;
             case 'solr':
             default:
-                return 'indexSolr';
+                $ret = 'indexSolr';
         }
 
         return $ret;

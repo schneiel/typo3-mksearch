@@ -393,7 +393,7 @@ class tx_mksearch_indexer_TxNewsNews extends tx_mksearch_indexer_Base
      * @param array                                 $options
      */
     protected function indexNewsContentElements(
-        /* \GeorgRinger\News\Domain\Model\News */ $news,
+        $news,
         tx_mksearch_interface_IndexerDocument $indexDoc,
         array $options = array()
     ) {

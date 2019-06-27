@@ -91,8 +91,7 @@ class tx_mksearch_mod1_Module extends tx_rnbase_mod_BaseModule
             'web_MksearchM1',
             array(
                 'id' => $this->getPid(),
-            ),
-            ''
+            )
         );
 
         return '<form action="'.$modUrl.'" method="POST" name="editform" id="editform">';

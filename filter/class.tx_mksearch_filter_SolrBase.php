@@ -510,7 +510,7 @@ class tx_mksearch_filter_SolrBase extends tx_rnbase_filter_BaseFilter
      * @TODO: kann die fq nicht immer ein array sein!? dann könnten wir uns das sparen!
      *
      * @param array        $options
-     * @param unknown_type $sFQ
+     * @param mixed        $sFQ
      */
     public static function addFilterQuery(array &$options, $sFQ)
     {

@@ -98,7 +98,7 @@ class tx_mksearch_indexer_Page extends tx_mksearch_indexer_Base
      */
     public function indexData(tx_rnbase_IModel $oModel, $tableName, $rawData, tx_mksearch_interface_IndexerDocument $indexDoc, $options)
     {
-        $lang = isset($this->options['lang']) ? $this->options['lang'] : 0;
+        $lang = isset($options['lang']) ? $options['lang'] : 0;
 
         // Localize record, if necessary
         if ($lang) {

@@ -29,6 +29,14 @@ tx_rnbase::load('tx_mksearch_mod1_util_IndexStatusHandler');
  */
 class tx_mksearch_mod1_decorator_Index
 {
+    /**
+     * @var tx_rnbase_mod_IModule
+     */
+    private $mod;
+
+    /**
+     * @param tx_rnbase_mod_IModule $mod
+     */
     public function __construct($mod)
     {
         $this->mod = $mod;
@@ -115,7 +123,7 @@ class tx_mksearch_mod1_decorator_Index
     }
 
     /**
-     * @param tx_mksearch_model_internal_Composite $item
+     * @param tx_mksearch_model_internal_Index $item
      * @param array                                $options
      *
      * @return string

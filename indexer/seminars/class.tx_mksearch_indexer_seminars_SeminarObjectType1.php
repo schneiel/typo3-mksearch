@@ -250,7 +250,7 @@ class tx_mksearch_indexer_seminars_SeminarObjectType1 extends tx_mksearch_indexe
         $aOptions = array();
         $aOptions['where'] = SEMINARS_TABLE_SEMINARS.'.topic='.$this->oSeminar->getUid();
         $aFrom = array(SEMINARS_TABLE_SEMINARS, SEMINARS_TABLE_SEMINARS);
-        $aRows = tx_rnbase_util_DB::doSelect(SEMINARS_TABLE_SEMINARS.'.uid', $aFrom, $aOptions);
+        $aRows = Tx_Rnbase_Database_Connection::getInstance()->doSelect(SEMINARS_TABLE_SEMINARS.'.uid', $aFrom, $aOptions);
 
         //now we get the according objects
         $aSeminars = array();

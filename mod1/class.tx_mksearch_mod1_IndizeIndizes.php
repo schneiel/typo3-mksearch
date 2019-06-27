@@ -158,7 +158,7 @@ class tx_mksearch_mod1_IndizeIndizes extends tx_rnbase_mod_BaseModFunc
 
         // pageids für dam
         if (tx_rnbase_util_Extensions::isLoaded('dam')) {
-            $pages = tx_rnbase_util_DB::doSelect('uid', 'pages', array('where' => 'pages.module=\'dam\''));
+            $pages = Tx_Rnbase_Database_Connection::getInstance()->doSelect('uid', 'pages', array('where' => 'pages.module=\'dam\''));
             $pidList .= (empty($pidList) ? '' : ',').implode(',', array_values($pages[0]));
         }
 
@@ -205,8 +205,8 @@ class tx_mksearch_mod1_IndizeIndizes extends tx_rnbase_mod_BaseModFunc
         $aTables['pid'] = tx_rnbase_parameters::getPostOrGetParameter('resetTables');
         // global, alle elemente
         $aTables['global'] = tx_rnbase_parameters::getPostOrGetParameter('resetTablesG');
-        if ((!is_array($aTables['pid']) && empty($aTables['pid']))
-            && (!is_array($aTables['global']) && empty($aTables['global']))
+        if ((!is_array($aTables['pid']))
+            && (!is_array($aTables['global']))
         ) {
             return '';
         }
@@ -247,8 +247,8 @@ class tx_mksearch_mod1_IndizeIndizes extends tx_rnbase_mod_BaseModFunc
                         '</li><li/>',
                         array_unique(
                             array_merge(
-                                is_array($aTables['pid']) ? $aTables['pid'] : array(),
-                                is_array($aTables['global']) ? $aTables['global'] : array()
+                                $aTables['pid'],
+                                $aTables['global']
                             )
                         )
                     ).

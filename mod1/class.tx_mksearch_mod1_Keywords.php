@@ -87,7 +87,7 @@ class tx_mksearch_mod1_Keywords extends tx_rnbase_mod_BaseModFunc
      *
      * @return tx_mksearch_mod1_searcher_Keywords
      */
-    private function getSearcher(&$options)
+    private function getSearcher($options)
     {
         if (!isset($options['pid'])) {
             $options['pid'] = $this->getModule()->id;

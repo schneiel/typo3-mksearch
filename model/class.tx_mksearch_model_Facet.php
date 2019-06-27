@@ -32,7 +32,7 @@ tx_rnbase::load('tx_rnbase_model_base');
 /**
  * Model für eine Facette.
  */
-class tx_mksearch_model_Facet extends tx_rnbase_model_base
+class tx_mksearch_model_Facet extends Tx_Rnbase_Domain_Model_Base
 {
     const TYPE_FIELD = 'type_field';
     const TYPE_PIVOT = 'type_pivot';
@@ -124,7 +124,7 @@ class tx_mksearch_model_Facet extends tx_rnbase_model_base
     /**
      * returns all childs a child facet.
      *
-     * @return multitype:tx_mksearch_model_Facet $child
+     * @return array[tx_mksearch_model_Facet $child]
      */
     public function getChilds()
     {

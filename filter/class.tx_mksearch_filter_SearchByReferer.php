@@ -99,7 +99,7 @@ class tx_mksearch_filter_SearchByReferer extends tx_rnbase_filter_BaseFilter imp
      * Get a message string for empty list. This is an language string. The key is
      * taken from ts-config: [item].listinfo.llkeyEmpty.
      *
-     * @param array_object             $viewData
+     * @param ArrayObject              $viewData
      * @param tx_rnbase_configurations $configurations
      *
      * @return string

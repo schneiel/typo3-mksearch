@@ -42,7 +42,7 @@ interface tx_mksearch_interface_SearchEngine
     /**
      * Get a document from index.
      *
-     * @param string $uid
+     * @param int $uid
      * @param string $extKey
      * @param string $contentType
      *

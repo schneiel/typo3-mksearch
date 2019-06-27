@@ -27,6 +27,14 @@
  */
 class tx_mksearch_mod1_decorator_IndexerConfig
 {
+    /**
+     * @var tx_rnbase_mod_IModule
+     */
+    private $mod;
+
+    /**
+     * @param tx_rnbase_mod_IModule $mod
+     */
     public function __construct($mod)
     {
         $this->mod = $mod;
@@ -54,8 +62,8 @@ class tx_mksearch_mod1_decorator_IndexerConfig
             case 'title':
                 $ret = '';
                 $ret .= $value;
-                if (!empty($record->record['description'])) {
-                    $ret .= '<br /><pre>'.$record->record['description'].'</pre>';
+                if (!empty($item->record['description'])) {
+                    $ret .= '<br /><pre>'.$item->record['description'].'</pre>';
                 }
                 break;
             case 'contenttype':

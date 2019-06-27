@@ -71,6 +71,8 @@ class tx_mksearch_model_IndexerDocumentBase implements tx_mksearch_interface_Ind
      */
     private $data = array();
 
+    private $secommands = array();
+
     /**
      * Factory for getting a new field object instance.
      *

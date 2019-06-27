@@ -93,7 +93,7 @@ class tx_mksearch_indexer_ttcontent_Normal extends tx_mksearch_indexer_Base
             // @TODO:
             //        konfigurierbar machen: description, author, etc.
             //        könnte wichtig werden!?
-            $pageData = $pageData ? $pageData : $this->getPageContent($model->record['pid']);
+            $pageData = $this->getPageContent($model->record['pid']);
             if (!empty($pageData['keywords'])) {
                 $keywords = explode($separator, $pageData['keywords']);
                 foreach ($keywords as $key => $keyword) {
@@ -346,7 +346,7 @@ class tx_mksearch_indexer_ttcontent_Normal extends tx_mksearch_indexer_Base
                     // statement that is too long. we are fine with a database access
                     // for each pid in the list as we are in the BE and performance shouldn't
                     // be a big concern!
-                    $aRows = tx_rnbase_util_DB::doSelect('tt_content.uid', $aFrom, $aOptions);
+                    $aRows =Tx_Rnbase_Database_Connection::getInstance()->doSelect('tt_content.uid', $aFrom, $aOptions);
 
                     foreach ($aRows as $aRow) {
                         $oIndexSrv->addRecordToIndex('tt_content', $aRow['uid']);

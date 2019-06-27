@@ -57,7 +57,7 @@ class tx_mksearch_indexer_TtAddressAddress implements tx_mksearch_interface_Inde
     {
         if ('tt_address' != $tableName) {
             if (tx_rnbase_util_Logger::isWarningEnabled()) {
-                tx_rnbase_util_Logger::warn(__METHOD__.': Unknown table "'.$tableName.'" given.', 'mksearch', array('tableName' => $tableName, 'sourceRecord' => $sourceRecord));
+                tx_rnbase_util_Logger::warn(__METHOD__.': Unknown table "'.$tableName.'" given.', 'mksearch', array('tableName' => $tableName, 'sourceRecord' => $rawData));
             }
 
             return null;

@@ -42,6 +42,7 @@ class tx_mksearch_mod1_util_Selector
     {
         $searchstring = $this->getValueFromModuleData($key);
 
+        $out = array();
         // Erst das Suchfeld, danach der Button.
         $out['field'] = $this->formTool->createTxtInput('SET['.$key.']', $searchstring, 10);
         $out['button'] = empty($options['submit']) ? '' : $this->formTool->createSubmit(
@@ -59,7 +60,7 @@ class tx_mksearch_mod1_util_Selector
      * @param array $data
      * @param array $options
      *
-     * @return bool
+     * @return string
      */
     public function showHiddenSelector(&$data, $options = array())
     {
@@ -76,7 +77,6 @@ class tx_mksearch_mod1_util_Selector
     /**
      * Zeigt eine Datumsauswahl mit einzelnen Selects für Tag, Monat und Jahr.
      *
-     * @param array  $aItems   Array mit den werten der Auswahlbox
      * @param string $sDefId   ID-String des Elements
      * @param array  $aData    enthält die Formularelement für die Ausgabe im Screen. Keys: selector, label
      * @param array  $aOptions zusätzliche Optionen: yearfrom, yearto,

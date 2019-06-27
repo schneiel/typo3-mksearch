@@ -20,11 +20,13 @@ abstract class tx_mksearch_mod1_handler_Base
     {
         tx_rnbase::load('tx_mksearch_mod1_util_Template');
 
+        $markerArray = array();
+        $options = array();
         return tx_mksearch_mod1_util_Template::parseList(
             $template,
             $mod,
-            $markerArray = array(),
-            $this->getSearcher($mod, $options = array()),
+            $markerArray,
+            $this->getSearcher($mod, $options),
             strtoupper($this->getSubID())
         );
     }

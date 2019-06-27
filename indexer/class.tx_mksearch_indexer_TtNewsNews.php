@@ -68,7 +68,7 @@ class tx_mksearch_indexer_TtNewsNews extends tx_mksearch_indexer_Base
         );
         $join = ' JOIN tt_news_cat_mm ON tt_news_cat_mm.uid_foreign=tt_news_cat.uid AND tt_news_cat.deleted=0 ';
         $from = array('tt_news_cat'.$join, 'tt_news_cat');
-        $rows = tx_rnbase_util_DB::doSelect(
+        $rows = Tx_Rnbase_Database_Connection::getInstance()->doSelect(
             'tt_news_cat_mm.uid_foreign, tt_news_cat.uid, tt_news_cat.title, tt_news_cat.single_pid',
             $from,
             $options
@@ -100,6 +100,8 @@ class tx_mksearch_indexer_TtNewsNews extends tx_mksearch_indexer_Base
     ) {
         $categories = $this->getCategories($oModel);
         // first check if certain categories should be included/excluded
+
+        $abort = false;
         if (!$this->checkInOrExcludeOptions($categories, $options)
             || !$this->checkInOrExcludeOptions($categories, $options, 1)
         ) {
@@ -114,7 +116,6 @@ class tx_mksearch_indexer_TtNewsNews extends tx_mksearch_indexer_Base
                 'rawData' => &$rawData,
                 'options' => $options,
                 'indexDoc' => &$indexDoc,
-                'boost' => &$boost,
                 'abort' => &$abort,
             ),
             $this
@@ -314,7 +315,7 @@ class tx_mksearch_indexer_TtNewsNews extends tx_mksearch_indexer_Base
      */
     protected function doSelect($what, $from, $options)
     {
-        return tx_rnbase_util_DB::doSelect($what, $from, $options);
+        return Tx_Rnbase_Database_Connection::getInstance()->doSelect($what, $from, $options);
     }
 
     /**
@@ -328,7 +329,7 @@ class tx_mksearch_indexer_TtNewsNews extends tx_mksearch_indexer_Base
     {
         tx_rnbase::load('tx_rnbase_util_DB');
 
-        return tx_rnbase_util_DB;
+        return tx_rnbase_util_DB::class;
     }
 
     /**
@@ -369,10 +370,8 @@ class tx_mksearch_indexer_TtNewsNews extends tx_mksearch_indexer_Base
         $categoryNames = array();
         foreach ($categories as $category) {
             $categoryNames[$category->record['uid_foreign']] = $category->record['title'];
-            // Die erste Kategorie mit einer Single-PID wird gewinnen
-            if (!$iCategorySinglePid) {
+                // Die erste Kategorie mit einer Single-PID wird gewinnen
                 $iCategorySinglePid = (int) $category->record['single_pid'];
-            }
         }
         if (!$iCategorySinglePid) {
             $iCategorySinglePid = (int) $options['defaultSinglePid'];
@@ -476,7 +475,7 @@ respectNoSearchFlagInRootline = 1
 
 # you should always configure the root pageTree for this indexer in the includes. mostly the domain
 # include.pageTrees {
-#   0 = $pid-of-domain
+#   0 = pid-of-domain
 # }
 
 # should a special workspace be indexed?

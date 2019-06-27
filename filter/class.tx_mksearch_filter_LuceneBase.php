@@ -324,7 +324,8 @@ class tx_mksearch_filter_LuceneBase extends tx_rnbase_filter_BaseFilter implemen
      * Get a message string for empty list. This is an language string. The key is
      * taken from ts-config: [item].listinfo.llkeyEmpty.
      *
-     * @param array_object             $viewData
+     * @param string                   $confId
+     * @param ArrayObject              $viewData
      * @param tx_rnbase_configurations $configurations
      *
      * @return string

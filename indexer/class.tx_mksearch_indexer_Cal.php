@@ -80,7 +80,7 @@ class tx_mksearch_indexer_Cal extends tx_mksearch_indexer_Base
             $events = $this->getEventsByCalendarUid($rawData['uid']);
         }
 
-        if ($events) {
+        if (isset($events)) {
             foreach ($events as $event) {
                 $this->addEventToIndex($event['uid']);
             }
@@ -96,7 +96,7 @@ class tx_mksearch_indexer_Cal extends tx_mksearch_indexer_Base
      */
     protected function getEventsByCategoryUid($categoryUid)
     {
-        return tx_rnbase_util_DB::doSelect(
+        return Tx_Rnbase_Database_Connection::getInstance()->doSelect(
             'uid_local as uid',
             'tx_cal_event_category_mm',
             array(
@@ -112,7 +112,7 @@ class tx_mksearch_indexer_Cal extends tx_mksearch_indexer_Base
      */
     protected function getEventsByCalendarUid($calendarUid)
     {
-        return tx_rnbase_util_DB::doSelect(
+        return Tx_Rnbase_Database_Connection::getInstance()->doSelect(
             'uid',
             'tx_cal_event',
             array(
@@ -430,7 +430,7 @@ respectNoSearchFlagInRootline = 1
 
 # you should always configure the root pageTree for this indexer in the includes. mostly the domain
 # include.pageTrees {
-#   0 = $pid-of-domain
+#   0 = pid-of-domain
 # }
 
 # should a special workspace be indexed?

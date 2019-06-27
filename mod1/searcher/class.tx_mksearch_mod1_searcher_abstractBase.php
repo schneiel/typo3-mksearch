@@ -42,7 +42,7 @@ abstract class tx_mksearch_mod1_searcher_abstractBase
     /**
      * Current hidden option.
      *
-     * @var string
+     * @var int
      */
     protected $currentShowHidden = 1;
 
@@ -165,7 +165,7 @@ abstract class tx_mksearch_mod1_searcher_abstractBase
     /**
      * Bildet die Resultliste mit Pager.
      *
-     * @return string
+     * @return array
      */
     public function getResultList()
     {
@@ -257,7 +257,7 @@ abstract class tx_mksearch_mod1_searcher_abstractBase
         }
         // else
         tx_rnbase::load('tx_mksearch_mod1_util_Template');
-        $aColumns = $this->getColumns($this->getDecorator($this->getModule()));
+        $aColumns = $this->getDecoratorColumns($this->getDecorator($this->getModule()));
 
         /* @var $tables Tx_Rnbase_Backend_Utility_Tables */
         $tables = tx_rnbase::makeInstance('Tx_Rnbase_Backend_Utility_Tables');

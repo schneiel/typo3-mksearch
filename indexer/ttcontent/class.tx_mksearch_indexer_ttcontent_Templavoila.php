@@ -123,7 +123,7 @@ class tx_mksearch_indexer_ttcontent_Templavoila extends tx_mksearch_indexer_ttco
             'enablefieldsoff' => true,
         );
         $aFrom = array('sys_refindex', 'sys_refindex');
-        $aRows = tx_rnbase_util_DB::doSelect('tablename, recuid', $aFrom, $aSqlOptions);
+        $aRows = Tx_Rnbase_Database_Connection::getInstance()->doSelect('tablename, recuid', $aFrom, $aSqlOptions);
 
         // now we need to collect the pids of all references. either a
         // reference is a page than we simply use it's pid or the
@@ -141,7 +141,7 @@ class tx_mksearch_indexer_ttcontent_Templavoila extends tx_mksearch_indexer_ttco
                         'enablefieldsoff' => true,
                     );
                     $aFrom = array('tt_content', 'tt_content');
-                    $aNewRows = tx_rnbase_util_DB::doSelect('tt_content.pid', $aFrom, $aSqlOptions);
+                    $aNewRows = Tx_Rnbase_Database_Connection::getInstance()->doSelect('tt_content.pid', $aFrom, $aSqlOptions);
                     $aReferences[] = $aNewRows[0]['pid'];
                 }
             }
