@@ -92,7 +92,7 @@ class tx_mksearch_action_ElasticSearch extends tx_mksearch_action_AbstractSearch
     }
 
     /**
-     * @return string
+     * @return Exception|object
      */
     protected function getSearchSolrAction()
     {

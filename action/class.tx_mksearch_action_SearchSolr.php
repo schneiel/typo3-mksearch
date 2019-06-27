@@ -412,10 +412,10 @@ class tx_mksearch_action_SearchSolr extends tx_mksearch_action_AbstractSearch
             if (tx_rnbase_util_TYPO3::isTYPO60OrHigher()) {
                 $tsfe = tx_rnbase_util_TYPO3::getTSFE();
                 $tsfe->config['config']['debug'] = 0;
-                if(tx_rnbase_util_typo3::isTYPO86OrHigher()) {
-                    $tsfe->TYPO3_CONF_VARS['FE']['debug'] = 0;
-                } else {
+                if(tx_rnbase_util_TYPO3::isTYPO86OrHigher()) {
                     $GLOBALS['TYPO3_CONF_VARS']['FE']['debug'] = 0;
+                } else {
+                    $tsfe->TYPO3_CONF_VARS['FE']['debug'] = 0;
                 }
             }
 

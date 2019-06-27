@@ -84,7 +84,7 @@ class tx_mksearch_action_ShowHit extends tx_rnbase_action_BaseIOC
         if (!$item instanceof tx_mksearch_interface_SearchHit) {
             throw new LogicException(
                 'The hit has to be an object instance of "tx_mksearch_interface_SearchHit",'
-                .'"'.(is_object($item) ? get_class($item) : gettype($item)).'" given.',
+                .'"'.get_class($item).'" given.',
                 1377774178
             );
         }
