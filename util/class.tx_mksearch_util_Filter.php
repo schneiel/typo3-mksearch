@@ -290,7 +290,6 @@ class tx_mksearch_util_Filter
         $sortFields = $sortFields ? tx_rnbase_util_Strings::trimExplode(',', $sortFields, true) : array();
 
         if (!empty($sortFields)) {
-            tx_rnbase::load('tx_rnbase_util_BaseMarker');
             $token = md5(microtime());
             $markOrders = array();
             foreach ($sortFields as $field) {
@@ -358,8 +357,6 @@ class tx_mksearch_util_Filter
         } else {
             $matches = array();
         }
-
-        tx_rnbase::load('tx_mksearch_util_Misc');
 
         if (// wurde das feld gefunden?
             isset($matches['field']) && !empty($matches['field'])

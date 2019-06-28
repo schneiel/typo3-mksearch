@@ -1,7 +1,7 @@
 {
     "name": "dmk/mksearch",
     "description": "Generic highly adjustable and extendable search engine framework, using Zend Lucene, Apache Solr or ElasticSearch. But support for other search engines can be provided easily.",
-    "version": "3.2.15",
+    "version": "3.2.16",
     "type": "typo3-cms-extension",
     "keywords": [
         "TYPO3 CMS",
@@ -46,16 +46,17 @@
     }
     ],
     "require": {
-        "typo3/cms": "~4.5 || ~6.2 || ~7.6 || ~8.7",
-        "digedag/rn-base": ">=1.6.3",
-        "dmk/phpstan-rnbase": "^0.0.1"
+        "typo3/cms": "~4.5 || ~6.2 || ~7.6 || ~8.7 || ~9.5",
+        "digedag/rn-base": ">=1.10.0"
     },
     "require-dev": {
         "nimut/testing-framework": "^2.0 || ^3.0 || ^4.0",
         "sebastian/phpcpd": "^3.0",
         "friendsofphp/php-cs-fixer": "2.15.*",
         "phpstan/phpstan": "^0.11",
-        "saschaegerer/phpstan-typo3": "dev-feature/update-phpstan"
+        "saschaegerer/phpstan-typo3": "dev-feature/update-phpstan",
+        "dmk/phpstan-rnbase": "^0.0.1",
+        "typo3/testing-framework": "*"
     },
     "autoload": {
         "classmap": [
@@ -80,12 +81,6 @@
             "DMK\\Mksearch\\" : "Classes"
         }
     },
-    "autoload-dev": {
-        "classmap": [
-            "lib",
-            "Resources/Private/PHP/Elastica"
-        ]
-    },
     "config": {
         "vendor-dir": ".Build/vendor",
         "bin-dir": ".Build/bin",
@@ -99,10 +94,7 @@
             "[ -L .Build/Web/typo3conf/ext/mksearch ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/mksearch"
         ]
     },
-    "extra" : {
-        "branch-alias" : {
-            "dev-development" : "master-dev"
-        },
+    "extra": {
         "typo3/cms": {
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
             "web-dir": ".Build/Web"
