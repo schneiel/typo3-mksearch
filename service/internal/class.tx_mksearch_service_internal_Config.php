@@ -39,10 +39,11 @@ class tx_mksearch_service_internal_Config extends tx_mksearch_service_internal_B
      *
      * @param tx_mksearch_model_internal_Composite $composite
      *
-     * @return array[tx_mksearch_model_internal_Config]
+     * @return tx_mksearch_model_internal_Config[]
      */
     public function getByComposite(tx_mksearch_model_internal_Composite $composite)
     {
+        $fields = $options = array();
         $fields['CMPCFGMM.uid_local'][OP_EQ_INT] = $composite->getUid();
 
         return $this->search($fields, $options);

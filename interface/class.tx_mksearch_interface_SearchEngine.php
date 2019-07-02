@@ -35,7 +35,7 @@ interface tx_mksearch_interface_SearchEngine
      * @param array $fields
      * @param array $options
      *
-     * @return array[tx_mksearch_model_SearchResult] search results
+     * @return tx_mksearch_model_SearchResult[] search results
      */
     public function search(array $fields = array(), array $options = array());
 

@@ -131,7 +131,7 @@ class tx_mksearch_service_engine_ElasticSearch extends Tx_Rnbase_Service_Base im
      */
     protected function getLogger()
     {
-        return tx_rnbase_util_Logger;
+        return tx_rnbase_util_Logger::class;
     }
 
     /**
@@ -140,7 +140,7 @@ class tx_mksearch_service_engine_ElasticSearch extends Tx_Rnbase_Service_Base im
      * @param array $fields
      * @param array $options
      *
-     * @return array[tx_mksearch_model_SearchResult] search results
+     * @return [] search results
      *
      * @todo support für alle optionen von elasticsearch
      *

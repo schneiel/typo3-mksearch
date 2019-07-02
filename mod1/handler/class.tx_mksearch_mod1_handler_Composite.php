@@ -18,7 +18,7 @@ class tx_mksearch_mod1_handler_Composite extends tx_mksearch_mod1_handler_Base i
     protected function getSearcher(tx_rnbase_mod_IModule $mod, &$options)
     {
         if (!isset($options['pid'])) {
-            $options['pid'] = $mod->id;
+            $options['pid'] = $mod->getPid();
         }
 
         return tx_rnbase::makeInstance('tx_mksearch_mod1_searcher_Composite', $mod, $options);

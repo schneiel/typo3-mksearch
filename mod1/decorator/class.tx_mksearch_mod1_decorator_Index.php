@@ -53,18 +53,17 @@ class tx_mksearch_mod1_decorator_Index
     /**
      * @param string                           $value
      * @param string                           $colName
-     * @param array                            $record
      * @param tx_mksearch_model_internal_Index $item
      */
-    public function format($value, $colName, $record, $item)
+    public function format($value, $colName, $item)
     {
         $ret = '';
         switch ($colName) {
             case 'core':
                 $ret = '';
                 $ret .= tx_mksearch_mod1_util_IndexStatusHandler::getInstance()->handleRequest4Index($item);
-                if (!empty($record->record['description'])) {
-                    $ret .= '<br /><pre>'.$record->record['description'].'</pre>';
+                if (!empty($item->record['description'])) {
+                    $ret .= '<br /><pre>'.$item->record['description'].'</pre>';
                 }
                 break;
             case 'engine':

@@ -30,10 +30,10 @@ class tx_mksearch_service_engine_SolrException extends tx_rnbase_util_Exception
     private $parent = false;
 
     /**
-     * @param $message
-     * @param int  $code
-     * @param bool $lastUrl
-     * @param bool $parent
+     * @param string $message
+     * @param int   $code
+     * @param bool  $lastUrl
+     * @param bool  $parent
      */
     public function __construct($message, $code = 0, $lastUrl = false, $parent = false)
     {

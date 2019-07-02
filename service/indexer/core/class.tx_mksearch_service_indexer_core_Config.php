@@ -126,7 +126,7 @@ class tx_mksearch_service_indexer_core_Config
         }
         tx_rnbase::load('tx_rnbase_util_DB');
 
-        return tx_rnbase_util_DB::_getPidList($rootPage['uid'], $recursive);
+        return tx_rnbase_util_Misc::getPidList($rootPage['uid'], $recursive);
     }
 
     /**

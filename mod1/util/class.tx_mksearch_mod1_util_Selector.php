@@ -130,7 +130,7 @@ class tx_mksearch_mod1_util_Selector
         // Tage
         $tmpDataDay = array();
         $items = array();
-        $totalDays = date('t', mktime(0, 0, 0, $selectedMonth, 1, $selectedYear));
+        $totalDays = (int) date('t', mktime(0, 0, 0, $selectedMonth, 1, $selectedYear));
         for ($i = 1; $i < $totalDays + 1; ++$i) {
             $items[$i] = $i;
         }

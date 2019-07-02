@@ -124,79 +124,6 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
     }
 
     /**
-     * Build query recursively from query array.
-     *
-     * @param $fields
-     *
-     * @return Zend_Search_Lucene_Search_Query_Boolean
-     */
-    private function buildQuery(array $fields)
-    {
-        $query = new Zend_Search_Lucene_Search_Query_Boolean();
-        $mtquery = new Zend_Search_Lucene_Search_Query_MultiTerm();
-
-        // Loop through all items of the field
-        foreach ($fields as $key => $f) {
-            foreach ($f as $ff) {
-                if (!is_array($ff['term'])) {
-                    // The term is a single token
-                    if (!(isset($ff['phrase']) and $ff['phrase'])) {
-                        // Call hook to manipulate search term. Term is utf8-encoded!
-                        tx_rnbase_util_Misc::callHook(
-                            'mksearch',
-                            'engine_ZendLucene_buildQuery_manipulateSingleTerm',
-                            array('term' => &$ff['term']),
-                            $this
-                        );
-
-                        // The term is really just a simple string
-                        $mtquery->addTerm(
-                            new Zend_Search_Lucene_Index_Term(
-                                $ff['term'],
-                                '__default__' == $key ? null : $key
-                            ),
-                            isset($ff['sign']) ? $ff['sign'] : null
-                        );
-                    } else {
-                        // The term is a complete phrase, which must be build from its parts
-                        $pq = new Zend_Search_Lucene_Search_Query_Phrase();
-                        foreach (explode(' ', $ff['term']) as $t) { // @todo: explode with regex for respecting white spaces in general
-                            // Call hook to manipulate search term. Term is utf8-encoded!
-                            tx_rnbase_util_Misc::callHook(
-                                'mksearch',
-                                'engine_ZendLucene_buildQuery_manipulateSingleTerm',
-                                array('term' => &$t),
-                                $this
-                            );
-                            if ($t) {
-                                $pq->addTerm(
-                                    new Zend_Search_Lucene_Index_Term(
-                                        $t,
-                                        '__default__' == $key ? null : $key
-                                    )
-                                );
-                            }
-                        }
-
-                        $query->addSubquery($pq);
-                    }
-                } else {
-                    // The term represents a subquery - step down recursively
-                    $query->addSubquery(
-                        $this->buildQuery($ff['term']),
-                        isset($ff['sign']) ? $ff['sign'] : null
-                    );
-                }
-            }
-        }
-        if ($mtquery->getTerms()) {
-            $query->addSubquery($mtquery);
-        }
-
-        return $query;
-    }
-
-    /**
      * Search indexed data via Apache Solr.
      *
      * Search term must be charset-encoded identically like data was indexed (utf-8 by default)!
@@ -210,7 +137,7 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
      *                       * [int] offset
      *                       * [int] limit
      *
-     * @return array[tx_mksearch_model_SearchHit]
+     * @return tx_mksearch_model_SearchHit[]
      */
     public function search(array $fields = array(), array $options = array())
     {
@@ -468,13 +395,13 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
      * Add a field to the given index document
      * TODO: wird hier in Solr vermutlich nicht verwendet! tx_mksearch_model_IndexerField gibt es nicht mehr...
      *
-     * @param string                         $key
-     * @param tx_mksearch_model_IndexerField $field
-     * @param Zend_Search_Lucene_Document    $doc
+     * @param string                              $key
+     * @param tx_mksearch_interface_IndexerField $field
+     * @param Zend_Search_Lucene_Document        $doc
      */
     private function addFieldToIndexDoc(
         $key,
-        tx_mksearch_model_IndexerField &$field,
+        tx_mksearch_interface_IndexerField &$field,
         Zend_Search_Lucene_Document &$doc
     ) {
         switch ($field->getStorageType()) {
@@ -781,6 +708,7 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
     protected function builtSpellcheckIndex($sRequestHandler)
     {
         $oSolr = $this->getSolr();
+        $sPath = '';
         //remove trailing slash of the path
         if ('/' == substr($oSolr->getPath(), -1)) {
             $sPath = substr($oSolr->getPath(), 0, -1);
@@ -811,10 +739,11 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
      * @param Apache_Solr_Response $response
      * @param array                $options
      *
-     * @return array[tx_mksearch_model_SolrHit]
+     * @return tx_mksearch_model_SolrHit[]
      */
     public static function getHitsFromSolrResponse(Apache_Solr_Response $response, array $options)
     {
+        $docs = array();
         if ('true' == $options['group']) {
             foreach ((array) $response->grouped->{$options['group.field']}->groups as $group) {
                 foreach ($group->doclist->docs as $doc) {
@@ -830,10 +759,8 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
         }
 
         $hits = array();
-        if ($docs) {
-            foreach ($docs as $doc) {
-                $hits[] = tx_rnbase::makeInstance('tx_mksearch_model_SolrHit', $doc);
-            }
+        foreach ($docs as $doc) {
+            $hits[] = tx_rnbase::makeInstance('tx_mksearch_model_SolrHit', $doc);
         }
 
         return $hits;

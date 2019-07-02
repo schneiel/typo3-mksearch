@@ -310,7 +310,7 @@ class tx_mksearch_service_engine_ZendLucene extends Tx_Rnbase_Service_Base imple
      *                       * [string] sort:        Sort Field and Sort Order e.g. name desc
      *                       * [boolean] sortRandom: random sorting no matter what sorting was set
      *
-     * @return array[tx_mksearch_model_SearchHit] or array[Zend_Search_Lucene_Search_QueryHit]  search results - format according to $options['rawOutput'] (usually not for public use as raw output depends on used search engine!)
+     * @return tx_mksearch_model_SearchHit[] | Zend_Search_Lucene_Search_QueryHit[]  search results - format according to $options['rawOutput'] (usually not for public use as raw output depends on used search engine!)
      */
     public function search(array $fields = array(), array $options = array())
     {

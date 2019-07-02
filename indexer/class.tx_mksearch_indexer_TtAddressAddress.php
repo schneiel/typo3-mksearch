@@ -274,7 +274,7 @@ exclude {
 
 # you should always configure the root pageTree for this indexer in the includes. mostly the domain
 # include.pageTrees {
-#   0 = $pid-of-domain
+#   0 = pid-of-domain
 # }
 
 # should a special workspace be indexed?

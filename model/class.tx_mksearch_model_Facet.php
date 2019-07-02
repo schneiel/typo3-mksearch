@@ -31,7 +31,7 @@
 /**
  * Model für eine Facette.
  */
-class tx_mksearch_model_Facet extends Tx_Rnbase_Domain_Model_Base
+class tx_mksearch_model_Facet extends tx_rnbase_model_base
 {
     const TYPE_FIELD = 'type_field';
     const TYPE_PIVOT = 'type_pivot';
@@ -88,7 +88,7 @@ class tx_mksearch_model_Facet extends Tx_Rnbase_Domain_Model_Base
     /**
      * adds one ore more child facets.
      *
-     * @param mixed <multitype:tx_mksearch_model_Facet, tx_mksearch_model_Facet> $child
+     * @param tx_mksearch_model_Facet|tx_mksearch_model_Facet[] $child
      *
      * @return tx_mksearch_model_Facet
      */
@@ -108,11 +108,11 @@ class tx_mksearch_model_Facet extends Tx_Rnbase_Domain_Model_Base
     /**
      * returns all childs a child facet.
      *
-     * @param array <multitype:tx_mksearch_model_Facet, tx_mksearch_model_Facet> $child
+     * @param tx_mksearch_model_Facet|tx_mksearch_model_Facet[] $childs
      *
      * @return tx_mksearch_model_Facet
      */
-    public function setChilds(array $childs)
+    public function setChilds($childs)
     {
         $this->childs = array();
         $this->addChild($childs);

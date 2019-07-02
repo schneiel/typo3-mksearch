@@ -39,10 +39,11 @@ class tx_mksearch_service_internal_Composite extends tx_mksearch_service_interna
      *
      * @param tx_mksearch_model_internal_Config $indexerconfig
      *
-     * @return array[tx_mksearch_model_internal_Index]
+     * @return tx_mksearch_model_internal_Index[]
      */
     public function getByConfiguration(tx_mksearch_model_internal_Config $indexerconfig)
     {
+        $fields = $options = array();
         $fields['CMPCFGMM.uid_foreign'][OP_EQ_INT] = $indexerconfig->getUid();
 
         return $this->search($fields, $options);
@@ -53,10 +54,11 @@ class tx_mksearch_service_internal_Composite extends tx_mksearch_service_interna
      *
      * @param tx_mksearch_model_internal_Index $index
      *
-     * @return array[tx_mksearch_model_internal_Index]
+     * @return tx_mksearch_model_internal_Index[]
      */
     public function getByIndex(tx_mksearch_model_internal_Index $index)
     {
+        $fields = $options = array();
         $fields['INDXCMPMM.uid_local'][OP_EQ_INT] = $index->getUid();
 
         return $this->search($fields, $options);
@@ -81,6 +83,8 @@ class tx_mksearch_service_internal_Composite extends tx_mksearch_service_interna
                 'INDXCMPMM.sorting' => 'ASC',
             ),
         );
+
+        $sTs = '';
         $tmpCfg = $this->search($fields, $options);
         foreach ($tmpCfg as $oModel) {
             $sTs .= "{\n".$oModel->record['configuration']."\n}";

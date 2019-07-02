@@ -103,12 +103,6 @@ abstract class tx_mksearch_service_indexer_BaseDataBase extends Tx_Rnbase_Servic
                 $sql['where'] = '1=1';
             }
 
-            // Limit query to records specified in $uids
-            // @todo: change hard coded 'uid'?
-            if (count($uids)) {
-                $sql['where'] .= ' AND uid in ('.implode(',', $uids).')';
-            }
-
             // Complete where clause with hidden & deleted query
             // Extract first table
             $sql['table'] = trim($sql['table']);

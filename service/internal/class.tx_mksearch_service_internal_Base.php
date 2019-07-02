@@ -48,7 +48,7 @@ class tx_mksearch_service_internal_Base extends Tx_Rnbase_Service_Base
      * @param array $fields
      * @param array $options
      *
-     * @return array[tx_mksearch_model_internal_Index]
+     * @return array tx_mksearch_model_internal_Index[]
      */
     public function search($fields, $options)
     {
@@ -83,7 +83,7 @@ class tx_mksearch_service_internal_Base extends Tx_Rnbase_Service_Base
     /**
      * Search database for all configurated Indices.
      *
-     * @return array[tx_mksearch_model_internal_Index]
+     * @return tx_mksearch_model_internal_Index[]
      */
     public function findAll()
     {
@@ -97,12 +97,14 @@ class tx_mksearch_service_internal_Base extends Tx_Rnbase_Service_Base
     /**
      * Search database for all configurated Indices.
      *
-     * @param $pageId
+     * @param string $pageId
      *
-     * @return array[tx_mksearch_model_internal_Index]
+     * @return tx_mksearch_model_internal_Index[]
      */
     public function getByPageId($pageId)
     {
+        $fields = $options = array();
+
         //$options['debug'] = 1;
         $alias = $this->getSearcher()->getBaseTableAlias();
         if (intval($pageId)) {

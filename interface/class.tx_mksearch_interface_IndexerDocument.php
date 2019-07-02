@@ -85,7 +85,7 @@ interface tx_mksearch_interface_IndexerDocument
     /**
      * Return data of indexer document.
      *
-     * @return array[tx_mksearch_interface_IndexerField]
+     * @return tx_mksearch_interface_IndexerField[]
      */
     public function getData();
 
@@ -162,7 +162,7 @@ interface tx_mksearch_interface_IndexerDocument
      *
      * Shortcut for setting a 'tstamp' field as indexed and stored keyword.
      *
-     * @param $title
+     * @param $tstamp
      */
     public function setTimestamp($tstamp);
 

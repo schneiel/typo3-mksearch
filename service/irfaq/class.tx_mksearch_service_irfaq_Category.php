@@ -30,7 +30,7 @@ class tx_mksearch_service_irfaq_Category extends tx_mksearch_service_Base
     /**
      * @param tx_mksearch_model_irfaq_Question $question
      *
-     * @return array[tx_mksearch_model_irfaq_Category]
+     * @return tx_mksearch_model_irfaq_Category[]
      */
     public function getByQuestion(tx_mksearch_model_irfaq_Question $question)
     {

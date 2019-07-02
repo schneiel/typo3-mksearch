@@ -39,7 +39,7 @@ class tx_mksearch_model_SolrHit extends tx_rnbase_model_base implements tx_mksea
     /**
      * Initialiaze model and fill it with data if provided.
      *
-     * @param $rowOrUid
+     * @param mixed $rowOrUid
      */
     public function init($rowOrUid = null)
     {

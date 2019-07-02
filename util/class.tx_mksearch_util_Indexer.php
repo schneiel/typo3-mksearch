@@ -110,7 +110,7 @@ class tx_mksearch_util_Indexer
      * Collects the values of all models inside the given array
      * and adds them as multivalue (array).
      *
-     * @param array[tx_rnbase_IModel]               $models
+     * @param tx_rnbase_IModel[]               $models
      * @param array                                 $recordIndexMapping
      * @param tx_mksearch_interface_IndexerDocument $indexDoc
      * @param string                                $prefix
@@ -467,7 +467,7 @@ class tx_mksearch_util_Indexer
     /**
      * @param int   $pid
      * @param array $options
-     * @param int || boolean $firstRootlineIndexInIncludePageTrees
+     * @param int | boolean $firstRootlineIndexInIncludePageTrees
      *
      * @return bool
      */
@@ -619,7 +619,7 @@ class tx_mksearch_util_Indexer
             'limit' => 1,
         );
         $from = array('pages', 'pages');
-        $page = tx_rnbase_util_DB::doSelect('*', $from, $sqlOptions);
+        $page = Tx_Rnbase_Database_Connection::getInstance()->doSelect('*', $from, $sqlOptions);
 
         return !empty($page[0]) ? $page[0] : array();
     }

@@ -107,7 +107,7 @@ class tx_mksearch_model_engineSpecific_solr_IndexerField extends tx_mksearch_mod
         //kein Wert vorhanden ist, sondern erst wieder bei array[3]
         foreach ($val as $key => $value) {
             // Flat fallback to first boost value
-            $res[] = array('value' => $val[$key], 'boost' => $boost[(empty($boost[$key]) ? 0 : $i)]);
+            $res[] = array('value' => $val[$key], 'boost' => $boost[(empty($boost[$key]) ? 0 : $key)]);
         }
 
         return $res;

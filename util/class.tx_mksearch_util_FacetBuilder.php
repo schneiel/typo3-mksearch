@@ -123,9 +123,9 @@ class tx_mksearch_util_FacetBuilder
      *
      * Damit splitten gruppieren wir nach dem String vor dem ersten Unterstrich.
      *
-     * @param array[stdClass] $facetData Query-Facet Daten von Solr
+     * @param stdClass[] $facetData Query-Facet Daten von Solr
      *
-     * @return array[tx_rnbase_model_base] Ausgabedaten
+     * @return tx_rnbase_model_base[] Ausgabedaten
      */
     protected function buildQueryFacets($facetData)
     {
@@ -167,9 +167,9 @@ class tx_mksearch_util_FacetBuilder
      *
      * Damit splitten gruppieren wir nach dem String vor dem ersten Unterstrich.
      *
-     * @param array[stdClass] $facetData Query-Facet Daten von Solr
+     * @param stdClass[] $facetData Query-Facet Daten von Solr
      *
-     * @return array[tx_rnbase_model_base] Ausgabedaten
+     * @return tx_rnbase_model_base[] Ausgabedaten
      */
     protected function buildPivotFacets($facetData)
     {
@@ -197,7 +197,7 @@ class tx_mksearch_util_FacetBuilder
      *
      * @param array $pivots
      *
-     * @return multitype:tx_mksearch_model_Facet
+     * @return array[tx_mksearch_model_Facet]
      */
     protected function buildPivotChildFacets($pivots)
     {
@@ -319,10 +319,10 @@ class tx_mksearch_util_FacetBuilder
         }
 
         // we have sortalbe facets, so sort!
-        if ($facet && $facet->hasSorting()) {
+        if (isset($facet) && $facet->hasSorting()) {
             $s = usort(
                 $facets,
-                array(self, 'cbSortFacets')
+                array($this, 'cbSortFacets')
             );
         }
 

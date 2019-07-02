@@ -5,7 +5,7 @@
  *
  * @author Michael Wagner <dev@dmk-ebusiness.de>
  */
-abstract class tx_mksearch_mod1_handler_Base
+abstract class tx_mksearch_mod1_handler_Base implements tx_rnbase_mod_IModHandler
 {
     /**
      * Enter description here ...

@@ -32,7 +32,7 @@ class tx_mksearch_service_irfaq_Question extends tx_mksearch_service_Base
      *
      * @param int $iExpert
      *
-     * @return array[tx_mksearch_model_irfaq_Question]
+     * @return tx_mksearch_model_irfaq_Question[]
      */
     public function getByExpert($iExpert)
     {
@@ -48,7 +48,7 @@ class tx_mksearch_service_irfaq_Question extends tx_mksearch_service_Base
      *
      * @param int $iCategory
      *
-     * @return array[tx_mksearch_model_irfaq_Question]
+     * @return tx_mksearch_model_irfaq_Question[]
      */
     public function getByCategory($iCategory)
     {

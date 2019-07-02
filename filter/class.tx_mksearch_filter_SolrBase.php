@@ -98,7 +98,7 @@ class tx_mksearch_filter_SolrBase extends tx_rnbase_filter_BaseFilter
      *
      * @param string $confId
      *
-     * @return Ambigous <multitype:, unknown>
+     * @return array|null|string
      */
     protected function getConfValue($confId)
     {

@@ -50,7 +50,7 @@ class tx_mksearch_util_SearchBuilder
             switch ($operator) {
                 case '-':
                 case '+':
-                    $term = ($removeOperators ? '' : $operator).'"'.substr($term, 1).'"';
+                    $term = $operator.'"'.substr($term, 1).'"';
                     break;
                 default:
                     $term = '"'.$term.'"';
@@ -254,6 +254,7 @@ class tx_mksearch_util_SearchBuilder
         }
 
         // fuzzy
+        $fuzzySlop = '';
         if ($fuzzy) {
             $fuzzySlop = $options['fuzzySlop'] ? $options['fuzzySlop'] : '0.2';
             switch ($combination) {
@@ -265,6 +266,7 @@ class tx_mksearch_util_SearchBuilder
                     $terms = self::fuzzyTerms($terms, $fuzzySlop);
                     break;
             }
+            $fuzzySlop = '~'.$fuzzySlop;
         }
         //ist ein Suchstring übrig geblieben?
         if (!self::emptyTerm($terms)) {
@@ -278,7 +280,7 @@ class tx_mksearch_util_SearchBuilder
                     break;
                 case MKSEARCH_OP_EXACT:
                     // in anführungszeichen setzen, bei fuzzy auch die tilde anfügen!
-                    $return = '"'.implode(' ', $terms).'"'.($fuzzy ? '~'.$fuzzySlop : '');
+                    $return = '"'.implode(' ', $terms).'"'.$fuzzySlop;
                     // wenn nicht dismax, klammern drum rum
                     $return = $dismax ? $return : '('.$return.')';
                     break;

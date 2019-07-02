@@ -50,12 +50,13 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
     /**
      * Search database for all configurated Indices.
      *
-     * @param tx_mksearch_model_internal_Composite $indexerconfig
+     * @param tx_mksearch_model_internal_Composite $composite
      *
-     * @return array[tx_mksearch_model_internal_Index]
+     * @return tx_mksearch_model_internal_Index[]
      */
     public function getByComposite(tx_mksearch_model_internal_Composite $composite)
     {
+        $fields = $options = array();
         $fields['INDXCMPMM.uid_foreign'][OP_EQ_INT] = $composite->getUid();
 
         return $this->search($fields, $options);
@@ -64,11 +65,11 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
     /**
      * Add a single database record to search index.
      *
-     * @param string $tableName
-     * @param int    $uid
-     * @param bool   $prefer
-     * @param string $resolver  class name of record resolver
-     * @param array  $data
+     * @param string       $tableName
+     * @param int          $uid
+     * @param bool         $prefer
+     * @param string|false $resolver  class name of record resolver
+     * @param array        $data
      *
      * @return bool true if record was successfully spooled
      */
@@ -112,7 +113,7 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
             $options = array();
             $options['where'] = 'recid=\''.$uid.'\' AND tablename=\''.$tableName.'\' AND deleted=0';
             $options['enablefieldsoff'] = 1;
-            $ret = tx_rnbase_util_DB::doSelect('uid', self::$queueTable, $options);
+            $ret = Tx_Rnbase_Database_Connection::getInstance()->doSelect('uid', self::$queueTable, $options);
             if (count($ret)) {
                 return false;
             } // Item schon in queue
@@ -234,8 +235,8 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
     /**
      * Adds models to the indexing queue.
      *
-     * @param array[Tx_Rnbase_Domain_Model_DomainInterface] $models
-     * @param Traversable| array $options
+     * @param Tx_Rnbase_Domain_Model_DomainInterface[] $models
+     * @param array $options
      *
      * @throws Exception
      */
@@ -335,7 +336,7 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
         $options['where'] = 'deleted=0';
         $options['enablefieldsoff'] = 1;
 
-        $data = tx_rnbase_util_DB::doSelect('*', self::$queueTable, $options);
+        $data = Tx_Rnbase_Database_Connection::getInstance()->doSelect('*', self::$queueTable, $options);
 
         // Nothing found in queue? Stop
         if (empty($data)) {
@@ -355,7 +356,7 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
             $rows[$queue['tablename']][] = $queue['recid'];
         }
         if (1 != $GLOBALS['TYPO3_CONF_VARS']['MKSEARCH_testmode']) {
-            $ret = tx_rnbase_util_DB::doUpdate(self::$queueTable, 'uid IN ('.implode(',', $uids).')', array('deleted' => 1));
+            $ret = Tx_Rnbase_Database_Connection::getInstance()->doSelect(self::$queueTable, 'uid IN ('.implode(',', $uids).')', array('deleted' => 1));
             $this->deleteOldQueueEntries();
             tx_rnbase_util_Logger::info(
                 'Indexing run finished with '.$ret.' items executed.',
@@ -408,7 +409,7 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
                     tx_rnbase_util_Logger::notice(
                         '[INDEXQUEUE] No indexer config found! Re-check your settings in mksearch BE-Module!',
                         'mksearch',
-                        array('Index' => $index->getTitle().' ('.$index->getUid().')', 'indexerClass' => get_class($index), 'indexdata' => $uids)
+                        array('Index' => $index->getTitle().' ('.$index->getUid().')', 'indexerClass' => get_class($index))
                     );
                     continue; // Continue with next index
                 }

@@ -56,7 +56,7 @@ class tx_mksearch_mod1_ConfigIndizesDbList extends tx_rnbase_mod_BaseModFunc
     protected function getContent($template, &$configurations, &$formatter, $formTool)
     {
         $data = array();
-        $storagePid = $this->getModule()->id;
+        $storagePid = $this->getModule()->getPid();
         if ($storagePid) {
             $data['showerror'] = 0;
             $data['path'] = tx_rnbase_util_Network::locationHeaderUrl('/'.TYPO3_mainDir).'db_list.php?id='.$storagePid;

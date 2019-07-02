@@ -90,9 +90,9 @@ class tx_mksearch_util_KeyValueFacet
      */
     public function buildFacetValue($key, $value, $sorting = null)
     {
-        $builded = $key.$this->facetDelimiter.$value;
+        $builded = $key . $this->facetDelimiter . $value;
         if (null !== $sorting) {
-            $builded .= $this->facetDelimiter.$sorting;
+            $builded .= $this->facetDelimiter . $sorting;
         }
 
         return $builded;
@@ -122,7 +122,7 @@ class tx_mksearch_util_KeyValueFacet
     /**
      * Prüft, ob es sich bei dem Wert um einen zusammengebauten handelt.
      *
-     * @param string$value
+     * @param string $value
      */
     public function checkValue($value)
     {
@@ -203,8 +203,4 @@ class tx_mksearch_util_KeyValueFacet
 //         }
         return $exploded;
     }
-}
-
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mksearch/util/class.tx_mksearch_util_KeyValueFacet.php']) {
-    include_once $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mksearch/util/class.tx_mksearch_util_KeyValueFacet.php'];
 }

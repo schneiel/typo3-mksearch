@@ -25,7 +25,7 @@ class tx_mksearch_view_ShowHit extends tx_rnbase_view_Single
      * Subpart der im HTML-Template geladen werden soll. Dieser wird der Methode
      * createOutput automatisch als $template übergeben.
      *
-     * @return string
+     * @return string|array
      */
     public function getMainSubpart(&$viewData)
     {

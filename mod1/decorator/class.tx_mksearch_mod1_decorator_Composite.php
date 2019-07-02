@@ -51,19 +51,18 @@ class tx_mksearch_mod1_decorator_Composite
     }
 
     /**
-     * @param string $value
-     * @param string $colName
-     * @param array  $record
-     * @param array  $item
+     * @param string                            $value
+     * @param string                            $colName
+     * @param tx_mksearch_model_internal_Index  $item
      */
-    public function format($value, $colName, $record, $item)
+    public function format($value, $colName, $item)
     {
         switch ($colName) {
             case 'title':
                 $ret = '';
                 $ret .= $value;
-                if (!empty($record->record['description'])) {
-                    $ret .= '<br /><pre>'.$record->record['description'].'</pre>';
+                if (!empty($item->record['description'])) {
+                    $ret .= '<br /><pre>'.$item->record['description'].'</pre>';
                 }
                 break;
             case 'indices':

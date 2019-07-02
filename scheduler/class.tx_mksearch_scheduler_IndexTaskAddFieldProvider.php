@@ -77,31 +77,6 @@ class tx_mksearch_scheduler_IndexTaskAddFieldProvider extends Tx_Rnbase_Schedule
         );
 
         return $additionalFields;
-
-        // Initialize extra field value
-        if (empty($taskInfo[ADDFIELD_TYPE])) {
-            if ('add' == $parentObject->CMD) {
-                // In case of new task
-                $taskInfo[ADDFIELD_TYPE] = '';
-            } elseif ('edit' == $parentObject->CMD) {
-                // In case of edit, and editing a test task, set to internal value if not data was submitted already
-                $taskInfo[ADDFIELD_TYPE] = $task->email;
-            } else {
-                // Otherwise set an empty value, as it will not be used anyway
-                $taskInfo[ADDFIELD_TYPE] = '';
-            }
-        }
-
-        // Write the code for the field
-        $fieldID = 'task_items';
-        $fieldCode = '<input type="text" name="tx_scheduler['.ADDFIELD_TYPE.']" id="'.$fieldID.'" value="'.$taskInfo[ADDFIELD_TYPE].'" size="30" />';
-        $additionalFields = array();
-        $additionalFields[$fieldID] = array(
-            'code' => $fieldCode,
-            'label' => 'LLL:EXT:mksearch/locallang_db.xml:indexTask.fieldType',
-        );
-
-        return $additionalFields;
     }
 
     /**

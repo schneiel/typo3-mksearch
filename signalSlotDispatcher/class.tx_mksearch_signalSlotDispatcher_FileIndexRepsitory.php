@@ -34,7 +34,7 @@
 class tx_mksearch_signalSlotDispatcher_FileIndexRepsitory
 {
     /**
-     * @param int || array $fileData
+     * @param int|array $data
      */
     public function putFileIntoQueue($data)
     {

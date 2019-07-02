@@ -50,7 +50,7 @@ abstract class tx_mksearch_service_Base extends Tx_Rnbase_Service_Base
      * @param array $fields
      * @param array $options
      *
-     * @return array[tx_rnbase_model_base]
+     * @return tx_rnbase_model_base[]
      */
     public function search($fields, $options)
     {
@@ -75,7 +75,7 @@ abstract class tx_mksearch_service_Base extends Tx_Rnbase_Service_Base
      * @TODO:   Achtung,
      *          tx_rnbase_util_SearchBase::getWrapperClass() ist eigentlich protected!
      *
-     * @param int $uuid
+     * @param int $uid
      *
      * @return tx_rnbase_model_base
      */
@@ -89,7 +89,7 @@ abstract class tx_mksearch_service_Base extends Tx_Rnbase_Service_Base
     /**
      * Find all records.
      *
-     * @return array[tx_rnbase_model_base]
+     * @return tx_rnbase_model_base[]
      */
     public function findAll()
     {

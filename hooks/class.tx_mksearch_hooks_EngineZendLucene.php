@@ -50,13 +50,13 @@ class tx_mksearch_hooks_EngineZendLucene
      * @param array $params:
      *                       ['term']    => string
      */
-    public function manipulateSingleTerm($p)
+    public function manipulateSingleTerm($params)
     {
-        if (!isset($p['term'])) {
+        if (!isset($params['term'])) {
             throw new Exception('tx_mksearch_hooks_EngineZendLucene::manipulateSingleTerm(): No term given!');
         }
         // else
-        $p['term'] = mb_strtolower($p['term'], 'utf-8');
+        $params['term'] = mb_strtolower($params['term'], 'utf-8');
     }
 }
 

@@ -82,7 +82,7 @@ class tx_mksearch_view_SearchSolr extends tx_rnbase_view_Base
      * Ausgabe von Suggestions für alternative Suchbegriffe.
      *
      * @param string                     $template
-     * @param array_object               $viewData
+     * @param ArrayObject                $viewData
      * @param tx_rnbase_configurations   $configurations
      * @param tx_rnbase_util_FormatUtil  $formatter
      * @param tx_rnbase_util_ListBuilder $listBuilder
@@ -120,7 +120,7 @@ class tx_mksearch_view_SearchSolr extends tx_rnbase_view_Base
      * Kümmert sich um das Parsen der Facetten.
      *
      * @param string                     $template
-     * @param array_object               $viewData
+     * @param ArrayObject                $viewData
      * @param tx_rnbase_configurations   $configurations
      * @param tx_rnbase_util_FormatUtil  $formatter
      * @param tx_rnbase_util_ListBuilder $listBuilder

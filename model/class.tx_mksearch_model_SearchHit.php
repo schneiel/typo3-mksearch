@@ -35,7 +35,7 @@ class tx_mksearch_model_SearchHit extends tx_rnbase_model_base implements tx_mks
     /**
      * Initialiaze model and fill it with data if provided.
      *
-     * @param $rowOrUid
+     * @param array|null $rowOrUid
      */
     public function init($rowOrUid = null)
     {
@@ -77,7 +77,7 @@ class tx_mksearch_model_SearchHit extends tx_rnbase_model_base implements tx_mks
      * As this model doesn't have a $TCA defined name,
      * return 0 like the original function, when no columns were found.
      *
-     * @return 0
+     * @return int
      */
     public function getColumnNames()
     {
