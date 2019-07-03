@@ -1,6 +1,5 @@
 includes:
     - .Build/vendor/saschaegerer/phpstan-typo3/extension.neon
-    - .Build/vendor/dmk/phpstan-rnbase/extension.neon
 parameters:
     level: max
     paths:
@@ -16,14 +15,12 @@ parameters:
         - "%currentWorkingDirectory%/search"
         - "%currentWorkingDirectory%/service"
         - "%currentWorkingDirectory%/signalSlotDispatcher"
-        - "%currentWorkingDirectory%/tca"
         - "%currentWorkingDirectory%/util"
         - "%currentWorkingDirectory%/view"
     bootstrap: %rootDir%/../../saschaegerer/phpstan-typo3/src/PhpstanTypo3Bootstrap.php
-    autoload_files:
-        - %currentWorkingDirectory%/.Build/vendor/autoload.php
     excludes_analyse:
         - %currentWorkingDirectory%/Classes/ViewHelpers/Format/HtmlViewHelper.php
+        - %currentWorkingDirectory%/indexer/seminars
     ignoreErrors:
         -
             message: '/Parameter \$configurationReader of method DMK\\Mksearch\\Hooks\\RealUrlConfigurationReader::addMksearchToBannedUrlsRegExp\(\) has invalid typehint type/'
@@ -37,4 +34,14 @@ parameters:
         -
             message: '/Access to an undefined property object::\$[a-z]+\./'
             path: %currentWorkingDirectory%/Classes/ViewHelpers/CObjectViewHelper.php
+        -
+            message: '/Call to static method setMinPrefixLength\(\) on an unknown class Zend_Search_Lucene_Search_Query_Wildcard\./'
+            path: %currentWorkingDirectory%/filter/class.tx_mksearch_filter_LuceneBase.php
+        -
+            message: '/ Zend_/'
+            path: %currentWorkingDirectory%/service/engine/class.tx_mksearch_service_engine_ZendLucene.php
+
+        -
+            message: '/Undefined variable: \$_EXTKEY/'
+            path: %currentWorkingDirectory%/service/ext_localconf.php
 
