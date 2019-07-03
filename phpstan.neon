@@ -1,7 +1,7 @@
 includes:
     - .Build/vendor/saschaegerer/phpstan-typo3/extension.neon
 parameters:
-    level: max
+    level: 1
     paths:
         - "%currentWorkingDirectory%/Classes"
         - "%currentWorkingDirectory%/action"
