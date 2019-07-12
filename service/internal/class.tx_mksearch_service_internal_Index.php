@@ -69,7 +69,7 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
      * @param int          $uid
      * @param bool         $prefer
      * @param string|false $resolver  class name of record resolver
-     * @param array        $data
+     * @param array|false        $data
      *
      * @return bool true if record was successfully spooled
      */
@@ -93,12 +93,12 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
     /**
      * Builds the record for insert.
      *
-     * @param string $tableName
-     * @param int    $uid
-     * @param bool   $prefer
-     * @param string $resolver  class name of record resolver
-     * @param array  $data
-     * @param array  $options
+     * @param string       $tableName
+     * @param int          $uid
+     * @param bool         $prefer
+     * @param string|false $resolver  class name of record resolver
+     * @param array|false  $data
+     * @param array        $options
      *
      * @return mixed array: (cr_date,prefer,recid,tablename,data,resolver) | false: if allredy exists
      */
@@ -135,12 +135,12 @@ class tx_mksearch_service_internal_Index extends tx_mksearch_service_internal_Ba
     /**
      * Add a single database record to search index.
      *
-     * @param string $tableName
-     * @param int    $uid
-     * @param bool   $prefer
-     * @param string $resolver  class name of record resolver
-     * @param array  $data
-     * @param array  $options
+     * @param string       $tableName
+     * @param int          $uid
+     * @param bool         $prefer
+     * @param string|false $resolver  class name of record resolver
+     * @param array|false  $data
+     * @param array        $options
      *
      * @return bool true if record was successfully spooled
      */

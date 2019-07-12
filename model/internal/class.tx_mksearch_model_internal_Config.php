@@ -24,6 +24,10 @@
 
 /**
  * Model for indexer configurations.
+ *
+ * @method string getContenttype()
+ * @method string getExtkey()
+ * @method string getTitle()
  */
 class tx_mksearch_model_internal_Config extends tx_rnbase_model_base
 {

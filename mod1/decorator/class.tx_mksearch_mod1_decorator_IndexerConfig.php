@@ -109,7 +109,7 @@ class tx_mksearch_mod1_decorator_IndexerConfig
     }
 
     /**
-     * @param tx_mksearch_model_internal_Composite $item
+     * @param tx_mksearch_model_internal_Config    $item
      * @param array                                $options
      *
      * @return string

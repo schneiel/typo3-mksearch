@@ -202,7 +202,7 @@ class tx_mksearch_util_Misc
      * does the same as sanitizeTerm, but dows not escape
      * , . / # ' % < >
      *
-     * @param string $sTerm
+     * @param string $value
      *
      * @return string
      *

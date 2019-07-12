@@ -140,7 +140,7 @@ class tx_mksearch_service_engine_ElasticSearch extends Tx_Rnbase_Service_Base im
      * @param array $fields
      * @param array $options
      *
-     * @return [] search results
+     * @return array search results
      *
      * @todo support für alle optionen von elasticsearch
      *

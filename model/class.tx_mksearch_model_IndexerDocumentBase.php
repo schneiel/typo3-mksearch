@@ -76,7 +76,7 @@ class tx_mksearch_model_IndexerDocumentBase implements tx_mksearch_interface_Ind
      *
      * @param mixed  $value                Either a scalar or an array value. Possibly not supported by every implementation!
      * @param mixed  $storageOptionsOrType Array (@see self::$_storageOptions) OR short cut string (@see self::$_storageType)
-     * @param string $boost                Boost of that $value
+     * @param float $boost                Boost of that $value
      * @param string $dataType             Data type of $value (@see self::$_dataType)
      * @param string $encoding
      *
@@ -281,7 +281,7 @@ class tx_mksearch_model_IndexerDocumentBase implements tx_mksearch_interface_Ind
      *
      * Shortcut for setting a 'tstamp' field as indexed and stored keyword.
      *
-     * @param $tstamp
+     * @param int $tstamp
      */
     public function setTimestamp($tstamp)
     {

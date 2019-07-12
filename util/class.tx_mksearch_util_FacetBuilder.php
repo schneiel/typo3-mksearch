@@ -349,9 +349,8 @@ class tx_mksearch_util_FacetBuilder
     /**
      * Debugs the big facet array for better readability.
      *
-     * @param mixed  $var
-     * @param number $levels
-     * @param mixed
+     * @param mixed $var
+     * @param int $levels
      */
     public static function debugFacets($var, $levels = 99)
     {

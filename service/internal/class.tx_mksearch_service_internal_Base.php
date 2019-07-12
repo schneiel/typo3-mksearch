@@ -118,7 +118,7 @@ class tx_mksearch_service_internal_Base extends Tx_Rnbase_Service_Base
     /**
      * Get model from database by its uid.
      *
-     * @param $uid
+     * @param int $uid
      *
      * @return Exception|object
      */

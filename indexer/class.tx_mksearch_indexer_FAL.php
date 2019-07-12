@@ -127,9 +127,7 @@ class tx_mksearch_indexer_FAL extends tx_mksearch_indexer_BaseMedia
     protected function getResourceStorage($storageUid)
     {
         if (\TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($storageUid)) {
-            /**
-             * @var ResourceFactory
-             */
+            /** @var \TYPO3\CMS\Core\Resource\ResourceFactory */
             $fileFactory = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\ResourceFactory');
 
             return $fileFactory->getStorageObject($storageUid);

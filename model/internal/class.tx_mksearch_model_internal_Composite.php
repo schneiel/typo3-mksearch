@@ -24,6 +24,8 @@
 
 /**
  * Model for indexer configuration composites.
+ *
+ * @method string getTitle()
  */
 class tx_mksearch_model_internal_Composite extends tx_rnbase_model_base
 {

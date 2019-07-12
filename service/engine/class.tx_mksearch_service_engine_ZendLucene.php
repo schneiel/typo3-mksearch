@@ -591,9 +591,11 @@ class tx_mksearch_service_engine_ZendLucene extends Tx_Rnbase_Service_Base imple
     /**
      * Get a document from index.
      *
-     * @param $uid
-     * @param $extKey
-     * @param $contentType
+     * @param int $uid
+     * @param string $extKey
+     * @param string $contentType
+     *
+     * @return tx_mksearch_model_SearchHit[] | Zend_Search_Lucene_Search_QueryHit[]
      */
     private function getIndexDocumentByContentUid($uid, $extKey, $contentType)
     {

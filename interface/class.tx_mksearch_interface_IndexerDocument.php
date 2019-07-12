@@ -162,7 +162,7 @@ interface tx_mksearch_interface_IndexerDocument
      *
      * Shortcut for setting a 'tstamp' field as indexed and stored keyword.
      *
-     * @param $tstamp
+     * @param int $tstamp
      */
     public function setTimestamp($tstamp);
 
