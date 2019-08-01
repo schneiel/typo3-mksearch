@@ -214,8 +214,8 @@ class tx_mksearch_util_Indexer
      * @param Tx_Rnbase_Domain_Model_RecordInterface $model
      * @param string                                 $tableName
      * @param bool                                   $prefer
-     * @param string                                 $resolver  class name of record resolver
-     * @param array                                  $data
+     * @param string|false                           $resolver  class name of record resolver
+     * @param array|false                            $data
      * @param array                                  $options
      */
     public function addModelToIndex(
@@ -255,12 +255,12 @@ class tx_mksearch_util_Indexer
      *
      * @TODO refactor to tx_mksearch_service_internal_Index::addModelsToIndex
      *
-     * @param array  $models
-     * @param string $tableName
-     * @param bool   $prefer
-     * @param string $resolver  class name of record resolver
-     * @param array  $data
-     * @param array  $options
+     * @param array        $models
+     * @param string       $tableName
+     * @param bool         $prefer
+     * @param string|false $resolver  class name of record resolver
+     * @param array|false  $data
+     * @param array        $options
      */
     public function addModelsToIndex(
         $models,

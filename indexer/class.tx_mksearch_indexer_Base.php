@@ -664,12 +664,12 @@ CONFIG;
     /**
      * just a wrapper for addModelToIndex and an array of models.
      *
-     * @param array  $models
-     * @param string $tableName
-     * @param bool   $prefer
-     * @param string $resolver  class name of record resolver
-     * @param array  $data
-     * @param array  $options
+     * @param array       $models
+     * @param string      $tableName
+     * @param bool        $prefer
+     * @param string|bool $resolver  class name of record resolver
+     * @param array|bool  $data
+     * @param array       $options
      */
     protected function addModelsToIndex(
         $models,

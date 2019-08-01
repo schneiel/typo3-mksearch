@@ -341,9 +341,9 @@ class tx_mksearch_service_engine_Solr extends Tx_Rnbase_Service_Base implements 
     /**
      * Get a document from index.
      *
-     * @param $uid
-     * @param $extKey
-     * @param $contentType
+     * @param string $uid
+     * @param string $extKey
+     * @param string $contentType
      *
      * @return array
      */
